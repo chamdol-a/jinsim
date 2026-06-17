@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>입시 인사이트</title>
+<meta name="description" content="EBS 입시정보 대표강사가 전하는 입시 나침반 — 주간 레터·전형 분석·시사 이슈 아카이브">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10233f; --ink-soft:#33476a; --gold:#b8893b; --gold-soft:#e9d9b8;
+    --paper:#faf6ee; --card:#ffffff; --line:#e4dccb; --muted:#7b8499;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+
+  /* ===== 상단 브랜드 바 ===== */
+  header.top{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+  header.top::after{content:"";position:absolute;right:-50px;top:-70px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(184,137,59,.30),transparent 70%);}
+  .top-inner{max-width:900px;margin:0 auto;padding:26px 22px 22px;position:relative;cursor:pointer;}
+  .kicker{font-size:11px;letter-spacing:.3em;color:var(--gold-soft);font-weight:500;}
+  .brand{font-family:'Noto Serif KR',serif;font-weight:900;font-size:38px;letter-spacing:-.02em;margin-top:4px;}
+  .brand .a{color:var(--gold);}
+  .tagline{font-size:13px;color:#c2cbdb;margin-top:6px;}
+  .byline{font-size:12px;color:#9aa6ba;margin-top:10px;}
+  .byline b{color:#fff;}
+
+  /* ===== 컨트롤 (검색 + 카테고리 칩) ===== */
+  .controls{max-width:900px;margin:0 auto;padding:20px 22px 6px;}
+  .search{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:15px;background:var(--card);color:var(--ink);}
+  .search:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,137,59,.15);}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .chip{padding:7px 15px;border-radius:30px;border:1px solid var(--line);background:var(--card);
+    font-size:13px;font-weight:500;cursor:pointer;transition:.15s;color:var(--ink-soft);white-space:nowrap;}
+  .chip:hover{border-color:var(--gold);}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  main{max-width:900px;margin:0 auto;padding:8px 22px 60px;}
+
+  /* ===== 히어로 (최신 주간 레터) ===== */
+  .hero{background:var(--ink);color:#fff;border-radius:16px;padding:30px 30px 28px;margin:18px 0 28px;
+    position:relative;overflow:hidden;cursor:pointer;}
+  .hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold);}
+  .hero .vol{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700;}
+  .hero h2{font-family:'Noto Serif KR',serif;font-size:30px;line-height:1.25;margin:10px 0 12px;letter-spacing:-.01em;}
+  .hero p{color:#cfd6e3;font-size:15px;}
+  .hero .go{display:inline-block;margin-top:16px;font-size:13px;font-weight:700;color:var(--gold);}
+
+  /* ===== 타임라인 (날짜 + 한 줄) ===== */
+  .section-label{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700;
+    margin:6px 0 4px;text-transform:uppercase;}
+  .list{display:flex;flex-direction:column;}
+  .row{display:flex;gap:18px;padding:20px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s;}
+  .row:hover{background:rgba(184,137,59,.06);}
+  .row .when{flex:none;width:74px;text-align:right;padding-top:2px;}
+  .row .when .d{font-family:'Noto Serif KR',serif;font-weight:700;font-size:17px;color:var(--ink);line-height:1.1;}
+  .row .when .y{font-size:11px;color:var(--muted);}
+  .row .body{flex:1;min-width:0;}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;
+    color:#fff;margin-bottom:7px;}
+  .row h3{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:4px;}
+  .row .sum{font-size:13.5px;color:var(--ink-soft);}
+  .row .tags{margin-top:8px;}
+  .tag{display:inline-block;font-size:11px;color:var(--muted);background:#efe9da;
+    padding:2px 8px;border-radius:4px;margin-right:5px;}
+  .empty{text-align:center;padding:60px 20px;color:var(--muted);}
+
+  /* ===== 글 읽기 화면 ===== */
+  .reader{padding-top:10px;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;
+    color:var(--ink-soft);margin:14px 0 18px;cursor:pointer;}
+  .back:hover{color:var(--gold);}
+  .art-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+  .art-date{font-size:13px;color:var(--muted);}
+  .reader h1{font-family:'Noto Serif KR',serif;font-size:34px;line-height:1.25;letter-spacing:-.01em;margin-bottom:18px;}
+  .article-content{font-size:16px;color:#2a3346;}
+  .article-content .lead{font-size:18px;color:var(--ink);font-weight:500;margin-bottom:20px;}
+  .article-content h3{font-family:'Noto Serif KR',serif;font-size:21px;margin:28px 0 10px;
+    padding-top:8px;border-top:1px solid var(--line);}
+  .article-content p{margin-bottom:14px;}
+  .article-content ul{margin:0 0 16px 4px;list-style:none;}
+  .article-content li{padding:5px 0;}
+  .article-content blockquote{border-left:4px solid var(--gold);background:var(--card);
+    padding:16px 20px;margin:22px 0;font-family:'Noto Serif KR',serif;font-size:18px;border-radius:0 8px 8px 0;}
+  .share{margin:34px 0 10px;padding:18px 20px;background:var(--card);border:1px dashed var(--line);
+    border-radius:10px;font-size:13px;color:var(--ink-soft);text-align:center;}
+  .share b{color:var(--gold);}
+
+  /* ===== 푸터 ===== */
+  footer{border-top:2px solid var(--ink);background:var(--paper);}
+  .foot-inner{max-width:900px;margin:0 auto;padding:24px 22px 40px;font-size:11.5px;color:var(--muted);text-align:center;}
+  .foot-inner b{color:var(--ink);}
+
+  @media (max-width:560px){
+    .brand{font-size:30px;} .hero h2{font-size:24px;} .reader h1{font-size:26px;}
+    .row{gap:12px;} .row .when{width:58px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner" onclick="location.hash=''">
+    <div class="kicker" id="kicker"></div>
+    <div class="brand" id="brand"></div>
+    <div class="tagline" id="tagline"></div>
+    <div class="byline" id="byline"></div>
+  </div>
+</header>
+
+<div id="app"></div>
+
+<footer>
+  <div class="foot-inner" id="foot"></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var S = window.SITE;
+  var catMap = {};
+  S.categories.forEach(function(c){ catMap[c.key] = c; });
+
+  // 상단/하단 고정 텍스트
+  document.getElementById('kicker').textContent  = S.meta.tagline;
+  document.getElementById('brand').innerHTML     = S.meta.brand.replace(/(입시)/,'<span class="a">$1</span>');
+  document.getElementById('tagline').textContent = '';
+  document.getElementById('byline').innerHTML    = '발행 · <b>'+S.meta.author+'</b>　|　최근 업데이트 '+fmt(S.meta.updated);
+  document.getElementById('foot').innerHTML =
+    '<b>'+S.meta.brand+'</b> · 발행 시점의 공개 정보를 바탕으로 한 참고용 콘텐츠입니다.<br>'+
+    '재발행 시 출처를 표기해 주세요. ⓒ 2026 '+S.meta.author;
+
+  var state = { cat:'all', q:'' };
+
+  function fmt(d){ var p=d.split('-'); return p[0]+'.'+p[1]+'.'+p[2]; }
+  function dd(d){ return d.split('-')[1]+'.'+d.split('-')[2]; }
+  function yy(d){ return d.split('-')[0]; }
+
+  function filtered(){
+    return S.articles.filter(function(a){
+      if(state.cat!=='all' && a.category!==state.cat) return false;
+      if(state.q){
+        var hay=(a.title+a.summary+(a.tags||[]).join(' ')).toLowerCase();
+        if(hay.indexOf(state.q.toLowerCase())<0) return false;
+      }
+      return true;
+    }).sort(function(x,y){ return x.date<y.date?1:-1; });
+  }
+
+  function renderHome(){
+    var arts = filtered();
+    var feat = (state.cat==='all' && !state.q)
+      ? S.articles.filter(function(a){return a.featured;}).sort(function(x,y){return x.date<y.date?1:-1;})[0]
+      : null;
+
+    var chips = '<div class="chip'+(state.cat==='all'?' on':'')+'" data-cat="all">전체</div>'+
+      S.categories.map(function(c){
+        return '<div class="chip'+(state.cat===c.key?' on':'')+'" data-cat="'+c.key+'">'+c.label+'</div>';
+      }).join('');
+
+    var heroHtml='';
+    if(feat){
+      heroHtml='<div class="hero" data-id="'+feat.id+'">'+
+        '<div class="vol">'+(feat.vol||'최신 레터')+'</div>'+
+        '<h2>'+feat.title+'</h2><p>'+feat.summary+'</p>'+
+        '<span class="go">전문 읽기 →</span></div>';
+    }
+
+    var rows = arts.filter(function(a){return !feat || a.id!==feat.id;}).map(function(a){
+      var c=catMap[a.category]||{label:a.category,color:'#888'};
+      var tags=(a.tags||[]).map(function(t){return '<span class="tag">#'+t+'</span>';}).join('');
+      return '<div class="row" data-id="'+a.id+'">'+
+        '<div class="when"><div class="d">'+dd(a.date)+'</div><div class="y">'+yy(a.date)+'</div></div>'+
+        '<div class="body">'+
+          '<span class="badge" style="background:'+c.color+'">'+c.label+'</span>'+
+          '<h3>'+a.title+'</h3><div class="sum">'+a.summary+'</div>'+
+          (tags?'<div class="tags">'+tags+'</div>':'')+
+        '</div></div>';
+    }).join('');
+
+    var listHtml = arts.length
+      ? '<div class="section-label">'+(state.q||state.cat!=='all'?'검색 결과':'최신 글')+'</div><div class="list">'+rows+'</div>'
+      : '<div class="empty">해당하는 글이 아직 없어요.</div>';
+
+    document.getElementById('app').innerHTML =
+      '<div class="controls">'+
+        '<input class="search" id="search" placeholder="🔎 키워드로 검색 (예: 학종, 의대, 논술)" value="'+state.q.replace(/"/g,'&quot;')+'">'+
+        '<div class="chips" id="chips">'+chips+'</div></div>'+
+      '<main>'+heroHtml+listHtml+'</main>';
+
+    var sb=document.getElementById('search');
+    sb.addEventListener('input',function(){ state.q=this.value; var p=this.selectionStart; renderHome();
+      var n=document.getElementById('search'); n.focus(); try{n.setSelectionRange(p,p);}catch(e){} });
+    document.getElementById('chips').addEventListener('click',function(e){
+      var c=e.target.getAttribute('data-cat'); if(c){ state.cat=c; renderHome(); }
+    });
+    [].forEach.call(document.querySelectorAll('[data-id]'),function(el){
+      el.addEventListener('click',function(){ location.hash='#/a/'+el.getAttribute('data-id'); });
+    });
+  }
+
+  function renderArticle(id){
+    var a=null; for(var i=0;i<S.articles.length;i++){ if(S.articles[i].id===id) a=S.articles[i]; }
+    if(!a){ location.hash=''; return; }
+    var c=catMap[a.category]||{label:a.category,color:'#888'};
+    var tags=(a.tags||[]).map(function(t){return '<span class="tag">#'+t+'</span>';}).join('');
+    document.getElementById('app').innerHTML=
+      '<main><div class="reader">'+
+        '<div class="back" onclick="location.hash=\'\'">← 목록으로</div>'+
+        '<div class="art-meta"><span class="badge" style="background:'+c.color+'">'+c.label+'</span>'+
+          '<span class="art-date">'+fmt(a.date)+(a.vol?' · '+a.vol:'')+'</span></div>'+
+        '<h1>'+a.title+'</h1>'+
+        '<div class="article-content">'+a.body+'</div>'+
+        (tags?'<div class="tags" style="margin-top:24px">'+tags+'</div>':'')+
+        '<div class="share">이 페이지 주소를 복사해 공유하세요. <b>같은 링크</b>에서 새 글이 계속 업데이트됩니다.</div>'+
+      '</div></main>';
+    window.scrollTo(0,0);
+  }
+
+  function route(){
+    var h=location.hash;
+    var m=h.match(/^#\/a\/(.+)$/);
+    if(m){ renderArticle(m[1]); } else { renderHome(); }
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>
