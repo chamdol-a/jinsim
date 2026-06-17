@@ -3,235 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>입시 인사이트</title>
+<title>진심 입시정보</title>
 <meta name="description" content="EBS 입시정보 대표강사가 전하는 입시 나침반 — 주간 레터·전형 분석·시사 이슈 아카이브">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#10233f; --ink-soft:#33476a; --gold:#b8893b; --gold-soft:#e9d9b8;
-    --paper:#faf6ee; --card:#ffffff; --line:#e4dccb; --muted:#7b8499;
+    --ink:#1a1a1a;
+    --paper:#ffffff;
+    --soft:#f6f5f1;
+    --rule:#e2e0da;
+    --accent:#8f1d1d;     /* 신문 마스트헤드 레드 (단색 포인트) */
+    --gray:#6f6c66;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
-    line-height:1.7;-webkit-font-smoothing:antialiased;}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--paper);
+    color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .serif{font-family:'Nanum Myeongjo',serif;}
   a{color:inherit;text-decoration:none;}
-  img{max-width:100%;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
 
-  /* ===== 상단 브랜드 바 ===== */
-  header.top{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
-  header.top::after{content:"";position:absolute;right:-50px;top:-70px;width:260px;height:260px;
-    background:radial-gradient(circle,rgba(184,137,59,.30),transparent 70%);}
-  .top-inner{max-width:900px;margin:0 auto;padding:26px 22px 22px;position:relative;cursor:pointer;}
-  .kicker{font-size:11px;letter-spacing:.3em;color:var(--gold-soft);font-weight:500;}
-  .brand{font-family:'Noto Serif KR',serif;font-weight:900;font-size:38px;letter-spacing:-.02em;margin-top:4px;}
-  .brand .a{color:var(--gold);}
-  .tagline{font-size:13px;color:#c2cbdb;margin-top:6px;}
-  .byline{font-size:12px;color:#9aa6ba;margin-top:10px;}
-  .byline b{color:#fff;}
+  /* ===== 마스트헤드 (신문 1면) ===== */
+  .util{display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;color:var(--gray);letter-spacing:.02em;
+    padding:11px 0;border-bottom:1px solid var(--rule);}
+  .util b{color:var(--ink);font-weight:600;}
+  .mast{text-align:center;padding:26px 0 16px;cursor:pointer;
+    border-bottom:4px double var(--ink);}
+  .mast h1{font-family:'Nanum Myeongjo',serif;font-weight:800;
+    font-size:54px;letter-spacing:-.01em;line-height:1;}
+  .mast h1 .m1{color:var(--accent);}
+  .mast .sub{font-size:13px;color:var(--gray);margin-top:12px;letter-spacing:.04em;}
 
-  /* ===== 컨트롤 (검색 + 카테고리 칩) ===== */
-  .controls{max-width:900px;margin:0 auto;padding:20px 22px 6px;}
-  .search{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;
-    font-family:inherit;font-size:15px;background:var(--card);color:var(--ink);}
-  .search:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,137,59,.15);}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
-  .chip{padding:7px 15px;border-radius:30px;border:1px solid var(--line);background:var(--card);
-    font-size:13px;font-weight:500;cursor:pointer;transition:.15s;color:var(--ink-soft);white-space:nowrap;}
-  .chip:hover{border-color:var(--gold);}
-  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  /* ===== 내비게이션 ===== */
+  .nav{display:flex;align-items:center;gap:22px;padding:12px 0;
+    border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+  .nav .tab{font-size:14.5px;color:var(--gray);cursor:pointer;font-weight:500;
+    padding:3px 0;border-bottom:2px solid transparent;}
+  .nav .tab:hover{color:var(--ink);}
+  .nav .tab.on{color:var(--accent);font-weight:700;border-bottom-color:var(--accent);}
+  .nav .sp{flex:1;}
+  .nav .search{border:none;border-bottom:1px solid var(--rule);background:transparent;
+    font-family:inherit;font-size:13.5px;padding:5px 2px;width:170px;color:var(--ink);}
+  .nav .search:focus{outline:none;border-bottom-color:var(--accent);}
 
-  main{max-width:900px;margin:0 auto;padding:8px 22px 60px;}
+  main{min-height:50vh;}
 
-  /* ===== 히어로 (최신 주간 레터) ===== */
-  .hero{background:var(--ink);color:#fff;border-radius:16px;padding:30px 30px 28px;margin:18px 0 28px;
-    position:relative;overflow:hidden;cursor:pointer;}
-  .hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold);}
-  .hero .vol{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700;}
-  .hero h2{font-family:'Noto Serif KR',serif;font-size:30px;line-height:1.25;margin:10px 0 12px;letter-spacing:-.01em;}
-  .hero p{color:#cfd6e3;font-size:15px;}
-  .hero .go{display:inline-block;margin-top:16px;font-size:13px;font-weight:700;color:var(--gold);}
+  /* ===== 리드 기사 ===== */
+  .lead{padding:30px 0 28px;border-bottom:1px solid var(--rule);cursor:pointer;}
+  .kicker{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.08em;}
+  .lead h2{font-family:'Nanum Myeongjo',serif;font-size:38px;line-height:1.22;
+    letter-spacing:-.01em;margin:10px 0 12px;}
+  .lead .sum{font-size:16.5px;color:#3b3833;max-width:46em;}
+  .lead .meta{font-size:12.5px;color:var(--gray);margin-top:14px;}
+  .lead:hover h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;}
 
-  /* ===== 타임라인 (날짜 + 한 줄) ===== */
-  .section-label{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700;
-    margin:6px 0 4px;text-transform:uppercase;}
-  .list{display:flex;flex-direction:column;}
-  .row{display:flex;gap:18px;padding:20px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s;}
-  .row:hover{background:rgba(184,137,59,.06);}
-  .row .when{flex:none;width:74px;text-align:right;padding-top:2px;}
-  .row .when .d{font-family:'Noto Serif KR',serif;font-weight:700;font-size:17px;color:var(--ink);line-height:1.1;}
-  .row .when .y{font-size:11px;color:var(--muted);}
-  .row .body{flex:1;min-width:0;}
-  .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;
-    color:#fff;margin-bottom:7px;}
-  .row h3{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:4px;}
-  .row .sum{font-size:13.5px;color:var(--ink-soft);}
-  .row .tags{margin-top:8px;}
-  .tag{display:inline-block;font-size:11px;color:var(--muted);background:#efe9da;
-    padding:2px 8px;border-radius:4px;margin-right:5px;}
-  .empty{text-align:center;padding:60px 20px;color:var(--muted);}
+  /* ===== 기사 인덱스 ===== */
+  .seclabel{font-size:12px;letter-spacing:.14em;color:var(--gray);font-weight:600;
+    padding:22px 0 4px;text-transform:uppercase;}
+  .row{padding:20px 0;border-bottom:1px solid var(--rule);cursor:pointer;}
+  .row-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:7px;}
+  .row .date{font-size:12.5px;color:var(--gray);font-variant-numeric:tabular-nums;flex:none;}
+  .row h3{font-size:19px;font-weight:700;line-height:1.4;letter-spacing:-.01em;}
+  .row .sum{font-size:14px;color:var(--gray);margin-top:5px;}
+  .row .tags{margin-top:9px;}
+  .tag{display:inline-block;font-size:11.5px;color:var(--gray);margin-right:10px;}
+  .tag::before{content:"#";opacity:.6;}
+  .row:hover h3{color:var(--accent);}
+  .empty{text-align:center;padding:64px 20px;color:var(--gray);}
 
-  /* ===== 글 읽기 화면 ===== */
-  .reader{padding-top:10px;animation:fade .25s ease;}
-  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-  .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;
-    color:var(--ink-soft);margin:14px 0 18px;cursor:pointer;}
-  .back:hover{color:var(--gold);}
-  .art-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
-  .art-date{font-size:13px;color:var(--muted);}
-  .reader h1{font-family:'Noto Serif KR',serif;font-size:34px;line-height:1.25;letter-spacing:-.01em;margin-bottom:18px;}
-  .article-content{font-size:16px;color:#2a3346;}
-  .article-content .lead{font-size:18px;color:var(--ink);font-weight:500;margin-bottom:20px;}
-  .article-content h3{font-family:'Noto Serif KR',serif;font-size:21px;margin:28px 0 10px;
-    padding-top:8px;border-top:1px solid var(--line);}
-  .article-content p{margin-bottom:14px;}
-  .article-content ul{margin:0 0 16px 4px;list-style:none;}
-  .article-content li{padding:5px 0;}
-  .article-content blockquote{border-left:4px solid var(--gold);background:var(--card);
-    padding:16px 20px;margin:22px 0;font-family:'Noto Serif KR',serif;font-size:18px;border-radius:0 8px 8px 0;}
-  .share{margin:34px 0 10px;padding:18px 20px;background:var(--card);border:1px dashed var(--line);
-    border-radius:10px;font-size:13px;color:var(--ink-soft);text-align:center;}
-  .share b{color:var(--gold);}
+  /* ===== 기사 본문 ===== */
+  .reader{max-width:680px;margin:0 auto;padding:8px 0 20px;animation:fade .2s ease;}
+  @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  .back{display:inline-block;font-size:13px;color:var(--gray);margin:18px 0 22px;
+    cursor:pointer;font-weight:500;}
+  .back:hover{color:var(--accent);}
+  .reader .kicker{font-size:12.5px;}
+  .reader h1{font-family:'Nanum Myeongjo',serif;font-size:34px;line-height:1.28;
+    letter-spacing:-.01em;margin:8px 0 12px;}
+  .reader .meta{font-size:13px;color:var(--gray);padding-bottom:20px;
+    border-bottom:2px solid var(--ink);margin-bottom:26px;}
+  .content{font-size:16.5px;color:#262320;}
+  .content .lead-p{font-size:18px;font-weight:500;color:var(--ink);margin-bottom:22px;line-height:1.7;}
+  .content h3{font-family:'Nanum Myeongjo',serif;font-size:22px;margin:30px 0 12px;}
+  .content p{margin-bottom:15px;}
+  .content ul{margin:0 0 18px 2px;list-style:none;}
+  .content li{padding:5px 0 5px 16px;position:relative;}
+  .content li::before{content:"—";position:absolute;left:0;color:var(--accent);}
+  .content blockquote{border-left:3px solid var(--accent);padding:6px 0 6px 20px;
+    margin:24px 0;font-family:'Nanum Myeongjo',serif;font-size:19px;line-height:1.7;color:var(--ink);}
+  .content a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+  .sources{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);
+    font-size:13px;color:var(--gray);}
+  .sources h4{font-size:12px;letter-spacing:.1em;color:var(--ink);margin-bottom:8px;text-transform:uppercase;}
+  .sources li{padding:3px 0 3px 14px;}
+  .sources li::before{color:var(--gray);}
+  .share{margin:30px 0 6px;padding:16px 18px;background:var(--soft);
+    font-size:13px;color:var(--gray);text-align:center;}
 
   /* ===== 푸터 ===== */
-  footer{border-top:2px solid var(--ink);background:var(--paper);}
-  .foot-inner{max-width:900px;margin:0 auto;padding:24px 22px 40px;font-size:11.5px;color:var(--muted);text-align:center;}
-  .foot-inner b{color:var(--ink);}
+  footer{border-top:4px double var(--ink);margin-top:50px;}
+  .foot{padding:24px 0 44px;font-size:12px;color:var(--gray);text-align:center;line-height:1.8;}
+  .foot b{color:var(--ink);}
 
   @media (max-width:560px){
-    .brand{font-size:30px;} .hero h2{font-size:24px;} .reader h1{font-size:26px;}
-    .row{gap:12px;} .row .when{width:58px;}
+    .mast h1{font-size:38px;} .lead h2{font-size:28px;} .reader h1{font-size:26px;}
+    .nav{gap:16px;} .nav .search{width:120px;}
   }
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="top-inner" onclick="location.hash=''">
-    <div class="kicker" id="kicker"></div>
-    <div class="brand" id="brand"></div>
-    <div class="tagline" id="tagline"></div>
-    <div class="byline" id="byline"></div>
+<div class="wrap">
+  <div class="util">
+    <span id="util-left"></span>
+    <span id="util-right"></span>
   </div>
-</header>
+  <div class="mast" onclick="location.hash=''">
+    <h1 class="serif" id="brand"></h1>
+    <div class="sub" id="tagline"></div>
+  </div>
+</div>
 
 <div id="app"></div>
 
-<footer>
-  <div class="foot-inner" id="foot"></div>
-</footer>
+<footer><div class="wrap"><div class="foot" id="foot"></div></div></footer>
 
 <script src="data.js"></script>
 <script>
 (function(){
   var S = window.SITE;
-  var catMap = {};
-  S.categories.forEach(function(c){ catMap[c.key] = c; });
+  var catMap = {}; S.categories.forEach(function(c){ catMap[c.key]=c; });
 
-  // 상단/하단 고정 텍스트
-  document.getElementById('kicker').textContent  = S.meta.tagline;
-  document.getElementById('brand').innerHTML     = S.meta.brand.replace(/(입시)/,'<span class="a">$1</span>');
-  document.getElementById('tagline').textContent = '';
-  document.getElementById('byline').innerHTML    = '발행 · <b>'+S.meta.author+'</b>　|　최근 업데이트 '+fmt(S.meta.updated);
+  function fmt(d){var p=d.split('-');return p[0]+'.'+p[1]+'.'+p[2];}
+  function dateK(d){var p=d.split('-');return p[0]+'년 '+(+p[1])+'월 '+(+p[2])+'일';}
+
+  // 마스트헤드/유틸/푸터
+  var b=S.meta.brand, sp=b.indexOf(' ');
+  document.getElementById('brand').innerHTML = sp>0
+    ? '<span class="m1">'+b.slice(0,sp)+'</span> '+b.slice(sp+1) : b;
+  document.getElementById('tagline').textContent = S.meta.tagline;
+  document.getElementById('util-left').innerHTML  = dateK(S.meta.updated)+' 업데이트';
+  document.getElementById('util-right').innerHTML = '발행 · <b>'+S.meta.author+'</b>';
   document.getElementById('foot').innerHTML =
-    '<b>'+S.meta.brand+'</b> · 발행 시점의 공개 정보를 바탕으로 한 참고용 콘텐츠입니다.<br>'+
-    '재발행 시 출처를 표기해 주세요. ⓒ 2026 '+S.meta.author;
+    '<b>'+S.meta.brand+'</b> · '+S.meta.tagline+'<br>'+
+    '발행 시점의 공개 정보를 바탕으로 한 참고용 콘텐츠입니다. 재발행 시 출처를 표기해 주세요.<br>ⓒ 2026 '+S.meta.brand;
 
-  var state = { cat:'all', q:'' };
-
-  function fmt(d){ var p=d.split('-'); return p[0]+'.'+p[1]+'.'+p[2]; }
-  function dd(d){ return d.split('-')[1]+'.'+d.split('-')[2]; }
-  function yy(d){ return d.split('-')[0]; }
+  var state={cat:'all',q:''};
 
   function filtered(){
     return S.articles.filter(function(a){
-      if(state.cat!=='all' && a.category!==state.cat) return false;
-      if(state.q){
-        var hay=(a.title+a.summary+(a.tags||[]).join(' ')).toLowerCase();
-        if(hay.indexOf(state.q.toLowerCase())<0) return false;
-      }
+      if(state.cat!=='all'&&a.category!==state.cat)return false;
+      if(state.q){var h=(a.title+a.summary+(a.tags||[]).join(' ')).toLowerCase();
+        if(h.indexOf(state.q.toLowerCase())<0)return false;}
       return true;
-    }).sort(function(x,y){ return x.date<y.date?1:-1; });
+    }).sort(function(x,y){return x.date<y.date?1:-1;});
+  }
+
+  function navHtml(){
+    var t='<div class="tab'+(state.cat==='all'?' on':'')+'" data-cat="all">전체</div>'+
+      S.categories.map(function(c){return '<div class="tab'+(state.cat===c.key?' on':'')+'" data-cat="'+c.key+'">'+c.label+'</div>';}).join('');
+    return '<div class="wrap"><nav class="nav">'+t+'<span class="sp"></span>'+
+      '<input class="search" id="search" placeholder="검색…" value="'+state.q.replace(/"/g,'&quot;')+'"></nav></div>';
   }
 
   function renderHome(){
-    var arts = filtered();
-    var feat = (state.cat==='all' && !state.q)
-      ? S.articles.filter(function(a){return a.featured;}).sort(function(x,y){return x.date<y.date?1:-1;})[0]
-      : null;
+    var arts=filtered();
+    var feat=(state.cat==='all'&&!state.q)
+      ? S.articles.filter(function(a){return a.featured;}).sort(function(x,y){return x.date<y.date?1:-1;})[0]:null;
 
-    var chips = '<div class="chip'+(state.cat==='all'?' on':'')+'" data-cat="all">전체</div>'+
-      S.categories.map(function(c){
-        return '<div class="chip'+(state.cat===c.key?' on':'')+'" data-cat="'+c.key+'">'+c.label+'</div>';
-      }).join('');
+    var leadHtml='';
+    if(feat){var c=catMap[feat.category]||{label:''};
+      leadHtml='<div class="lead" data-id="'+feat.id+'">'+
+        '<div class="kicker">'+c.label+(feat.vol?'　'+feat.vol:'')+'</div>'+
+        '<h2 class="serif">'+feat.title+'</h2><div class="sum">'+feat.summary+'</div>'+
+        '<div class="meta">'+fmt(feat.date)+'　|　전문 읽기 →</div></div>';}
 
-    var heroHtml='';
-    if(feat){
-      heroHtml='<div class="hero" data-id="'+feat.id+'">'+
-        '<div class="vol">'+(feat.vol||'최신 레터')+'</div>'+
-        '<h2>'+feat.title+'</h2><p>'+feat.summary+'</p>'+
-        '<span class="go">전문 읽기 →</span></div>';
-    }
-
-    var rows = arts.filter(function(a){return !feat || a.id!==feat.id;}).map(function(a){
-      var c=catMap[a.category]||{label:a.category,color:'#888'};
-      var tags=(a.tags||[]).map(function(t){return '<span class="tag">#'+t+'</span>';}).join('');
+    var rows=arts.filter(function(a){return !feat||a.id!==feat.id;}).map(function(a){
+      var c=catMap[a.category]||{label:a.category};
+      var tags=(a.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
       return '<div class="row" data-id="'+a.id+'">'+
-        '<div class="when"><div class="d">'+dd(a.date)+'</div><div class="y">'+yy(a.date)+'</div></div>'+
-        '<div class="body">'+
-          '<span class="badge" style="background:'+c.color+'">'+c.label+'</span>'+
-          '<h3>'+a.title+'</h3><div class="sum">'+a.summary+'</div>'+
-          (tags?'<div class="tags">'+tags+'</div>':'')+
-        '</div></div>';
+        '<div class="row-top"><span class="kicker">'+c.label+'</span><span class="date">'+fmt(a.date)+'</span></div>'+
+        '<h3>'+a.title+'</h3><div class="sum">'+a.summary+'</div>'+
+        (tags?'<div class="tags">'+tags+'</div>':'')+'</div>';
     }).join('');
 
-    var listHtml = arts.length
-      ? '<div class="section-label">'+(state.q||state.cat!=='all'?'검색 결과':'최신 글')+'</div><div class="list">'+rows+'</div>'
+    var listHtml=arts.length
+      ? '<div class="seclabel">'+(state.q||state.cat!=='all'?'검색 결과 '+arts.length+'건':'기사 목록')+'</div>'+rows
       : '<div class="empty">해당하는 글이 아직 없어요.</div>';
 
-    document.getElementById('app').innerHTML =
-      '<div class="controls">'+
-        '<input class="search" id="search" placeholder="🔎 키워드로 검색 (예: 학종, 의대, 논술)" value="'+state.q.replace(/"/g,'&quot;')+'">'+
-        '<div class="chips" id="chips">'+chips+'</div></div>'+
-      '<main>'+heroHtml+listHtml+'</main>';
+    document.getElementById('app').innerHTML=
+      navHtml()+'<div class="wrap"><main>'+leadHtml+listHtml+'</main></div>';
 
     var sb=document.getElementById('search');
-    sb.addEventListener('input',function(){ state.q=this.value; var p=this.selectionStart; renderHome();
-      var n=document.getElementById('search'); n.focus(); try{n.setSelectionRange(p,p);}catch(e){} });
-    document.getElementById('chips').addEventListener('click',function(e){
-      var c=e.target.getAttribute('data-cat'); if(c){ state.cat=c; renderHome(); }
-    });
+    sb.addEventListener('input',function(){state.q=this.value;var p=this.selectionStart;renderHome();
+      var n=document.getElementById('search');n.focus();try{n.setSelectionRange(p,p);}catch(e){}});
+    [].forEach.call(document.querySelectorAll('.tab'),function(el){
+      el.addEventListener('click',function(){state.cat=el.getAttribute('data-cat');renderHome();});});
     [].forEach.call(document.querySelectorAll('[data-id]'),function(el){
-      el.addEventListener('click',function(){ location.hash='#/a/'+el.getAttribute('data-id'); });
-    });
+      el.addEventListener('click',function(){location.hash='#/a/'+el.getAttribute('data-id');});});
   }
 
   function renderArticle(id){
-    var a=null; for(var i=0;i<S.articles.length;i++){ if(S.articles[i].id===id) a=S.articles[i]; }
-    if(!a){ location.hash=''; return; }
-    var c=catMap[a.category]||{label:a.category,color:'#888'};
-    var tags=(a.tags||[]).map(function(t){return '<span class="tag">#'+t+'</span>';}).join('');
+    var a=null;for(var i=0;i<S.articles.length;i++){if(S.articles[i].id===id)a=S.articles[i];}
+    if(!a){location.hash='';return;}
+    var c=catMap[a.category]||{label:a.category};
+    var tags=(a.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
+    var src=(a.sources&&a.sources.length)
+      ? '<div class="sources"><h4>출처</h4><ul>'+a.sources.map(function(s){
+          return '<li>'+(s.url?'<a href="'+s.url+'" target="_blank" rel="noopener">'+s.name+'</a>':s.name)+'</li>';}).join('')+'</ul></div>':'';
     document.getElementById('app').innerHTML=
-      '<main><div class="reader">'+
+      '<div class="wrap"><div class="reader">'+
         '<div class="back" onclick="location.hash=\'\'">← 목록으로</div>'+
-        '<div class="art-meta"><span class="badge" style="background:'+c.color+'">'+c.label+'</span>'+
-          '<span class="art-date">'+fmt(a.date)+(a.vol?' · '+a.vol:'')+'</span></div>'+
-        '<h1>'+a.title+'</h1>'+
-        '<div class="article-content">'+a.body+'</div>'+
-        (tags?'<div class="tags" style="margin-top:24px">'+tags+'</div>':'')+
-        '<div class="share">이 페이지 주소를 복사해 공유하세요. <b>같은 링크</b>에서 새 글이 계속 업데이트됩니다.</div>'+
-      '</div></main>';
+        '<div class="kicker">'+c.label+(a.vol?'　'+a.vol:'')+'</div>'+
+        '<h1 class="serif">'+a.title+'</h1>'+
+        '<div class="meta">'+dateK(a.date)+' · 발행 '+S.meta.author+'</div>'+
+        '<div class="content">'+a.body+'</div>'+
+        (tags?'<div class="tags" style="margin-top:22px">'+tags+'</div>':'')+
+        src+
+        '<div class="share">이 페이지 주소를 복사해 공유하세요. 같은 링크에서 새 글이 계속 업데이트됩니다.</div>'+
+      '</div></div>';
     window.scrollTo(0,0);
   }
 
-  function route(){
-    var h=location.hash;
-    var m=h.match(/^#\/a\/(.+)$/);
-    if(m){ renderArticle(m[1]); } else { renderHome(); }
-  }
-  window.addEventListener('hashchange',route);
-  route();
+  function route(){var m=location.hash.match(/^#\/a\/(.+)$/);if(m)renderArticle(m[1]);else renderHome();}
+  window.addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
