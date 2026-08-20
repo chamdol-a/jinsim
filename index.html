@@ -48,6 +48,18 @@
   .nav .search{border:none;border-bottom:1px solid var(--rule);background:transparent;
     font-family:inherit;font-size:13.5px;padding:5px 2px;width:170px;color:var(--ink);}
   .nav .search:focus{outline:none;border-bottom-color:var(--accent);}
+  .nav .tab.vlink{color:#1b6ca8;font-weight:700;}
+  .nav .tab.vlink:hover{color:#12557f;}
+  .nav .tab.vlink.on{color:#1b6ca8;border-bottom-color:#1b6ca8;}
+
+  /* ===== 지역 하위 탭 (입시 설명회) ===== */
+  .subnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 2px;}
+  .rchip{font-size:13px;color:var(--gray);cursor:pointer;padding:5px 13px;
+    border:1px solid var(--rule);border-radius:999px;background:var(--paper);transition:all .12s;}
+  .rchip:hover{border-color:var(--accent);color:var(--ink);}
+  .rchip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+  .rchip .rn{font-size:11px;opacity:.7;font-variant-numeric:tabular-nums;margin-left:3px;}
+  .rchip.on .rn{opacity:.9;}
 
   main{min-height:50vh;}
 
@@ -103,8 +115,37 @@
   .share{margin:30px 0 6px;padding:16px 18px;background:var(--soft);
     font-size:13px;color:var(--gray);text-align:center;}
 
+  /* ===== 진심 데이터 ===== */
+  .nav .tab.data{position:relative;}
+  .dintro{background:var(--soft);padding:16px 18px;font-size:13.5px;color:#3b3833;
+    margin:24px 0 6px;line-height:1.65;border-left:3px solid var(--accent);}
+  .dintro b{color:var(--ink);}
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 10px;}
+  .dcard{border:1px solid var(--rule);padding:18px 18px 16px;cursor:pointer;
+    transition:border-color .15s,box-shadow .15s;background:var(--paper);}
+  .dcard:hover{border-color:var(--accent);box-shadow:0 2px 14px rgba(0,0,0,.05);}
+  .dcard h3{font-size:18px;font-weight:700;line-height:1.4;margin:2px 0 0;}
+  .dcard:hover h3{color:var(--accent);}
+  .dframe{width:100%;min-height:78vh;border:1px solid var(--rule);background:#fff;margin-top:6px;}
+  @media (max-width:560px){ .dgrid{grid-template-columns:1fr;} }
+
+  /* ===== 사진 게시판 ===== */
+  .content img{max-width:100%;height:auto;display:block;margin:16px auto;border:1px solid var(--rule);}
+  .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin:20px 0 10px;}
+  .pcard{cursor:pointer;}
+  .pcard .thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--rule);
+    background:var(--soft);display:block;transition:border-color .15s;}
+  .pcard:hover .thumb{border-color:var(--accent);}
+  .pcard .nothumb{display:flex;align-items:center;justify-content:center;
+    font-size:12px;color:var(--gray);width:100%;aspect-ratio:4/3;border:1px solid var(--rule);background:var(--soft);}
+  .pcard h3{font-size:15px;font-weight:700;line-height:1.45;margin:9px 0 3px;}
+  .pcard:hover h3{color:var(--accent);}
+  .pcard .date{font-size:12px;color:var(--gray);font-variant-numeric:tabular-nums;}
+
   /* ===== 푸터 ===== */
   footer{border-top:4px double var(--ink);margin-top:50px;}
+  .foot .adm{color:var(--gray);text-decoration:underline;text-underline-offset:3px;opacity:.55;}
+  .foot .adm:hover{color:var(--accent);opacity:1;}
   .foot{padding:24px 0 44px;font-size:12px;color:var(--gray);text-align:center;line-height:1.8;}
   .foot b{color:var(--ink);}
 
@@ -131,9 +172,28 @@
 
 <footer><div class="wrap"><div class="foot" id="foot"></div></div></footer>
 
-<script src="data.js"></script>
 <script>
+/* 콘텐츠는 content/articles.json 이 원본입니다(관리자 페이지에서 편집).
+   캐시 우회(?t=시각)로 불러와 갱신 즉시 반영되게 합니다. */
 (function(){
+  function load(src){return new Promise(function(res,rej){
+    var s=document.createElement('script');
+    s.src=src+(src.indexOf('?')<0?'?':'&')+'t='+(new Date().getTime());
+    s.onload=res;s.onerror=function(){rej(src);};
+    document.head.appendChild(s);
+  });}
+  function fail(msg){var a=document.getElementById('app');
+    if(a)a.innerHTML='<div class="wrap"><p style="padding:48px 0;text-align:center;color:#6f6c66">'+msg+'</p></div>';}
+  fetch('content/articles.json?t='+(new Date().getTime()),{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(j){
+      window.SITE=j;
+      return load('pages.js').catch(function(){window.SITE_DATA={items:[]};});
+    })
+    .then(function(){__bootApp();})
+    .catch(function(){fail('데이터를 불러오지 못했습니다. 새로고침해 주세요.');});
+})();
+function __bootApp(){
   var S = window.SITE;
   var catMap = {}; S.categories.forEach(function(c){ catMap[c.key]=c; });
 
@@ -149,13 +209,28 @@
   document.getElementById('util-right').innerHTML = '발행 · <b>'+S.meta.author+'</b>';
   document.getElementById('foot').innerHTML =
     '<b>'+S.meta.brand+'</b> · '+S.meta.tagline+'<br>'+
-    '발행 시점의 공개 정보를 바탕으로 한 참고용 콘텐츠입니다. 재발행 시 출처를 표기해 주세요.<br>ⓒ 2026 '+S.meta.brand;
+    '발행 시점의 공개 정보를 바탕으로 한 참고용 콘텐츠입니다. 재발행 시 출처를 표기해 주세요.<br>'+
+    S.meta.brand+'(since 2026) · <a class="adm" href="admin.html">관리</a>';
 
-  var state={cat:'all',q:''};
+  var state={cat:'all',q:'',view:'home',region:'all'};
+
+  // 입시 설명회 지역 그룹 (tags[0] = 시·도 기준으로 묶음)
+  var REGION_GROUPS=[
+    {key:'sudogwon',   label:'수도권',     members:['서울','경기','인천','수도권']},
+    {key:'gangwon',    label:'강원',       members:['강원']},
+    {key:'chungcheong',label:'충청',       members:['대전','세종','충북','충남','충청']},
+    {key:'honam',      label:'호남',       members:['광주','전북','전남']},
+    {key:'yeongnam',   label:'영남',       members:['부산','대구','울산','경북','경남']},
+    {key:'nation',     label:'전국·온라인',members:['전국','온라인']}
+  ];
+  var REGION_OF={};
+  REGION_GROUPS.forEach(function(g){g.members.forEach(function(m){REGION_OF[m]=g.key;});});
+  function regionGroupOf(a){var t=(a.tags&&a.tags[0])||''; return REGION_OF[t]||'nation';}
 
   function filtered(){
     return S.articles.filter(function(a){
       if(state.cat!=='all'&&a.category!==state.cat)return false;
+      if(state.cat==='briefing'&&state.region!=='all'&&regionGroupOf(a)!==state.region)return false;
       if(state.q){var h=(a.title+a.summary+(a.tags||[]).join(' ')).toLowerCase();
         if(h.indexOf(state.q.toLowerCase())<0)return false;}
       return true;
@@ -163,13 +238,41 @@
   }
 
   function navHtml(){
-    var t='<div class="tab'+(state.cat==='all'?' on':'')+'" data-cat="all">전체</div>'+
-      S.categories.map(function(c){return '<div class="tab'+(state.cat===c.key?' on':'')+'" data-cat="'+c.key+'">'+c.label+'</div>';}).join('');
-    return '<div class="wrap"><nav class="nav">'+t+'<span class="sp"></span>'+
-      '<input class="search" id="search" placeholder="검색…" value="'+state.q.replace(/"/g,'&quot;')+'"></nav></div>';
+    var home=state.view==='home';
+    var t='<div class="tab'+(home&&state.cat==='all'?' on':'')+'" data-cat="all">전체</div>'+
+      S.categories.map(function(c){return '<div class="tab'+(home&&state.cat===c.key?' on':'')+'" data-cat="'+c.key+'">'+c.label+'</div>';}).join('')+
+      '<div class="tab data'+(state.view==='data'?' on':'')+'" data-view="data">진심 데이터</div>'+
+      '<div class="tab vlink'+(state.view==='video'?' on':'')+'" data-view="video">김진석t 영상</div>';
+    var search=home?'<input class="search" id="search" placeholder="검색…" value="'+state.q.replace(/"/g,'&quot;')+'">':'';
+    return '<div class="wrap"><nav class="nav">'+t+'<span class="sp"></span>'+search+'</nav></div>';
+  }
+
+  function wireTabs(){
+    [].forEach.call(document.querySelectorAll('.tab'),function(el){
+      el.addEventListener('click',function(){
+        var dv=el.getAttribute('data-view');
+        if(dv==='data'){location.hash='#/data';return;}
+        if(dv==='video'){location.hash='#/video';return;}
+        state.view='home';state.cat=el.getAttribute('data-cat');state.region='all';
+        if(location.hash){location.hash='';}else{renderHome();}
+      });});
+  }
+
+  function regionBarHtml(){
+    if(state.cat!=='briefing')return '';
+    var briefs=S.articles.filter(function(a){return a.category==='briefing';});
+    function cnt(key){return key==='all'?briefs.length
+      :briefs.filter(function(a){return regionGroupOf(a)===key;}).length;}
+    var chips='<div class="rchip'+(state.region==='all'?' on':'')+'" data-region="all">전체<span class="rn">'+cnt('all')+'</span></div>';
+    chips+=REGION_GROUPS.map(function(g){
+      var c=cnt(g.key); if(!c)return '';
+      return '<div class="rchip'+(state.region===g.key?' on':'')+'" data-region="'+g.key+'">'+g.label+'<span class="rn">'+c+'</span></div>';
+    }).join('');
+    return '<div class="wrap"><div class="subnav">'+chips+'</div></div>';
   }
 
   function renderHome(){
+    state.view='home';
     var arts=filtered();
     var feat=(state.cat==='all'&&!state.q)
       ? S.articles.filter(function(a){return a.featured;}).sort(function(x,y){return x.date<y.date?1:-1;})[0]:null;
@@ -181,6 +284,27 @@
         '<h2 class="serif">'+feat.title+'</h2><div class="sum">'+feat.summary+'</div>'+
         '<div class="meta">'+fmt(feat.date)+'　|　전문 읽기 →</div></div>';}
 
+    // 사진 게시판은 갤러리(썸네일 격자)로 표시
+    if(state.cat==='photo'){
+      var pcards=arts.map(function(a){
+        var th=a.cover?'<img class="thumb" src="'+a.cover+'" alt="'+String(a.title).replace(/"/g,'&quot;')+'" loading="lazy">'
+                      :'<div class="nothumb">사진 없음</div>';
+        return '<div class="pcard" data-id="'+a.id+'">'+th+'<h3>'+a.title+'</h3>'+
+          '<div class="date">'+fmt(a.date)+'</div></div>';
+      }).join('');
+      document.getElementById('app').innerHTML=navHtml()+'<div class="wrap"><main>'+
+        '<div class="seclabel">사진 게시판 '+arts.length+'건'+(state.q?' (검색: '+state.q+')':'')+'</div>'+
+        (arts.length?'<div class="pgrid">'+pcards+'</div>':'<div class="empty">아직 올린 사진 글이 없어요.</div>')+
+        '</main></div>';
+      var sb0=document.getElementById('search');
+      sb0.addEventListener('input',function(){state.q=this.value;var p=this.selectionStart;renderHome();
+        var n=document.getElementById('search');n.focus();try{n.setSelectionRange(p,p);}catch(e){}});
+      wireTabs();
+      [].forEach.call(document.querySelectorAll('[data-id]'),function(el){
+        el.addEventListener('click',function(){location.hash='#/a/'+el.getAttribute('data-id');});});
+      return;
+    }
+
     var rows=arts.filter(function(a){return !feat||a.id!==feat.id;}).map(function(a){
       var c=catMap[a.category]||{label:a.category};
       var tags=(a.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
@@ -190,20 +314,92 @@
         (tags?'<div class="tags">'+tags+'</div>':'')+'</div>';
     }).join('');
 
+    var secLabel;
+    if(state.cat==='briefing'){
+      var rl='전체 지역';
+      for(var gi=0;gi<REGION_GROUPS.length;gi++){if(REGION_GROUPS[gi].key===state.region)rl=REGION_GROUPS[gi].label;}
+      secLabel='입시 설명회 · '+rl+' '+arts.length+'건'+(state.q?' (검색: '+state.q+')':'');
+    }else{
+      secLabel=(state.q||state.cat!=='all')?'검색 결과 '+arts.length+'건':'기사 목록';
+    }
     var listHtml=arts.length
-      ? '<div class="seclabel">'+(state.q||state.cat!=='all'?'검색 결과 '+arts.length+'건':'기사 목록')+'</div>'+rows
+      ? '<div class="seclabel">'+secLabel+'</div>'+rows
       : '<div class="empty">해당하는 글이 아직 없어요.</div>';
 
     document.getElementById('app').innerHTML=
-      navHtml()+'<div class="wrap"><main>'+leadHtml+listHtml+'</main></div>';
+      navHtml()+regionBarHtml()+'<div class="wrap"><main>'+leadHtml+listHtml+'</main></div>';
 
     var sb=document.getElementById('search');
     sb.addEventListener('input',function(){state.q=this.value;var p=this.selectionStart;renderHome();
       var n=document.getElementById('search');n.focus();try{n.setSelectionRange(p,p);}catch(e){}});
-    [].forEach.call(document.querySelectorAll('.tab'),function(el){
-      el.addEventListener('click',function(){state.cat=el.getAttribute('data-cat');renderHome();});});
+    wireTabs();
+    [].forEach.call(document.querySelectorAll('[data-region]'),function(el){
+      el.addEventListener('click',function(){state.region=el.getAttribute('data-region');renderHome();});});
     [].forEach.call(document.querySelectorAll('[data-id]'),function(el){
       el.addEventListener('click',function(){location.hash='#/a/'+el.getAttribute('data-id');});});
+  }
+
+  function dataItems(){
+    var D=(window.SITE_DATA&&window.SITE_DATA.items)?window.SITE_DATA.items.slice():[];
+    return D.sort(function(x,y){return x.date<y.date?1:-1;});
+  }
+
+  function renderData(){
+    state.view='data';
+    var D=dataItems();
+    var cards=D.map(function(p){
+      return '<div class="dcard" data-did="'+p.id+'">'+
+        '<div class="row-top"><span class="kicker">데이터</span><span class="date">'+fmt(p.date)+'</span></div>'+
+        '<h3>'+p.title+'</h3>'+(p.desc?'<div class="sum">'+p.desc+'</div>':'')+
+        (p.tag?'<div class="tags"><span class="tag">'+p.tag+'</span></div>':'')+'</div>';
+    }).join('');
+    var intro='<div class="dintro">직접 만든 <b>HTML 자료</b>(표·그래프·안내문 등)를 모아 두는 공간입니다. '+
+      '<b>data-html</b> 폴더에 HTML 파일을 넣고 <b>pages.js</b>에 한 줄만 추가하면 여기에 카드로 나타나며, '+
+      '올린 HTML을 수정하면 새로고침 시 자동 반영됩니다.</div>';
+    var body=D.length?'<div class="dgrid">'+cards+'</div>'
+      :'<div class="empty">아직 등록된 데이터가 없어요.<br>data-html 폴더에 HTML을 넣고 pages.js에 등록하면 여기에 나타납니다.</div>';
+    document.getElementById('app').innerHTML=navHtml()+'<div class="wrap"><main>'+intro+body+'</main></div>';
+    wireTabs();
+    [].forEach.call(document.querySelectorAll('[data-did]'),function(el){
+      el.addEventListener('click',function(){location.hash='#/d/'+el.getAttribute('data-did');});});
+    window.scrollTo(0,0);
+  }
+
+  function renderDataPage(id){
+    state.view='data';
+    var D=dataItems(),p=null;
+    for(var i=0;i<D.length;i++){if(D[i].id===id)p=D[i];}
+    if(!p){location.hash='#/data';return;}
+    var src=p.file+(p.file.indexOf('?')<0?'?':'&')+'t='+(new Date().getTime());
+    var wrapStyle=p.wide?' style="max-width:1400px"':'';
+    document.getElementById('app').innerHTML=
+      '<div class="wrap"'+wrapStyle+'><div class="reader" style="max-width:100%">'+
+        '<div class="back" onclick="location.hash=\'#/data\'">← 진심 데이터 목록</div>'+
+        '<div class="kicker">데이터</div>'+
+        '<h1 class="serif">'+p.title+'</h1>'+
+        '<div class="meta">'+dateK(p.date)+' · '+S.meta.author+'</div>'+
+        '<iframe class="dframe" src="'+src+'" title="'+p.title.replace(/"/g,'&quot;')+'"></iframe>'+
+        '<div class="share">이 자료의 HTML 파일(<b>'+p.file+'</b>)을 수정하면 새로고침 시 자동 반영됩니다.</div>'+
+      '</div></div>';
+    window.scrollTo(0,0);
+  }
+
+  function renderVideo(){
+    state.view='video';
+    var url='https://claude.ai/code/artifact/6b5ed8aa-829c-4435-944a-8c46c8c22461';
+    document.getElementById('app').innerHTML=
+      navHtml()+'<div class="wrap"><main>'+
+        '<div class="reader" style="max-width:100%">'+
+          '<div class="kicker" style="color:#1b6ca8">김진석t 영상</div>'+
+          '<h1 class="serif">김진석t 영상</h1>'+
+          '<div class="meta">'+S.meta.author+'</div>'+
+          '<iframe class="dframe" src="'+url+'" title="김진석t 영상" allow="fullscreen" referrerpolicy="no-referrer"></iframe>'+
+          '<div class="share">영상이 보이지 않으면 여기서 열어 주세요 → '+
+            '<a href="'+url+'" target="_blank" rel="noopener" style="color:#1b6ca8;text-decoration:underline;text-underline-offset:3px">김진석t 영상 새 창으로 열기</a></div>'+
+        '</div>'+
+      '</main></div>';
+    wireTabs();
+    window.scrollTo(0,0);
   }
 
   function renderArticle(id){
@@ -219,7 +415,9 @@
         '<div class="back" onclick="location.hash=\'\'">← 목록으로</div>'+
         '<div class="kicker">'+c.label+(a.vol?'　'+a.vol:'')+'</div>'+
         '<h1 class="serif">'+a.title+'</h1>'+
-        '<div class="meta">'+dateK(a.date)+' · 발행 '+S.meta.author+'</div>'+
+        '<div class="meta">'+(a.category==='briefing'
+          ? dateK(a.date)+(a.link?' · <a href="'+a.link+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">설명회 안내·관련 링크 →</a>':'')
+          : dateK(a.date)+' · 발행 '+S.meta.author)+'</div>'+
         '<div class="content">'+a.body+'</div>'+
         (tags?'<div class="tags" style="margin-top:22px">'+tags+'</div>':'')+
         src+
@@ -228,9 +426,16 @@
     window.scrollTo(0,0);
   }
 
-  function route(){var m=location.hash.match(/^#\/a\/(.+)$/);if(m)renderArticle(m[1]);else renderHome();}
+  function route(){
+    var h=location.hash;
+    var m=h.match(/^#\/a\/(.+)$/); if(m){renderArticle(m[1]);return;}
+    var d=h.match(/^#\/d\/(.+)$/); if(d){renderDataPage(d[1]);return;}
+    if(h==='#/data'){renderData();return;}
+    if(h==='#/video'){renderVideo();return;}
+    renderHome();
+  }
   window.addEventListener('hashchange',route);route();
-})();
+}
 </script>
 </body>
 </html>

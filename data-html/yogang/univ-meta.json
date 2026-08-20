@@ -1,0 +1,882 @@
+{
+ "0002748": {
+  "name": "가야대학교",
+  "homepage": "http://ipsi.kaya.ac.kr"
+ },
+ "0000063": {
+  "name": "가천대학교",
+  "homepage": "https://admission.gachon.ac.kr/admission/html/main/main.asp"
+ },
+ "0000072": {
+  "name": "가톨릭관동대학교",
+  "homepage": "http://ipsi.cku.ac.kr"
+ },
+ "0000215": {
+  "name": "가톨릭꽃동네대학교",
+  "homepage": "https://www.kkot.ac.kr/ipsi/main/view/"
+ },
+ "0000049": {
+  "name": "가톨릭대학교 (성신교정)",
+  "homepage": "https://songsin.catholic.ac.kr/"
+ },
+ "0000046": {
+  "name": "가톨릭대학교 (성심캠퍼스)",
+  "homepage": "https://ipsi.catholic.ac.kr/"
+ },
+ "0000048": {
+  "name": "가톨릭대학교 (성의교정)",
+  "homepage": "http://ipsi.catholic.ac.kr/"
+ },
+ "0000050": {
+  "name": "감리교신학대학교",
+  "homepage": "https://www.mtu.ac.kr"
+ },
+ "0000051": {
+  "name": "강남대학교",
+  "homepage": "http://admission.kangnam.ac.kr"
+ },
+ "0000079": {
+  "name": "강서대학교",
+  "homepage": "http://admission.gangseo.ac.kr"
+ },
+ "0003364": {
+  "name": "강원대학교 (강릉캠퍼스)",
+  "homepage": "https://admission.kangwon.ac.kr/"
+ },
+ "0003363": {
+  "name": "강원대학교 (도계캠퍼스)",
+  "homepage": "https://admission.kangwon.ac.kr/"
+ },
+ "0000004": {
+  "name": "강원대학교 (삼척캠퍼스)",
+  "homepage": "https://admission.kangwon.ac.kr/"
+ },
+ "0000003": {
+  "name": "강원대학교 (춘천캠퍼스)",
+  "homepage": "https://admission.kangwon.ac.kr/"
+ },
+ "0000052": {
+  "name": "건국대학교",
+  "homepage": "http://enter.konkuk.ac.kr/"
+ },
+ "0000053": {
+  "name": "건국대학교(글로컬)",
+  "homepage": "http://enter.kku.ac.kr"
+ },
+ "0000054": {
+  "name": "건양대학교 (논산캠퍼스)",
+  "homepage": "http://ipsi.konyang.ac.kr/"
+ },
+ "0000055": {
+  "name": "건양대학교 (메디컬캠퍼스)",
+  "homepage": "http://ipsi.konyang.ac.kr/"
+ },
+ "0000058": {
+  "name": "경기대학교 (서울캠퍼스)",
+  "homepage": "http://enter.kyonggi.ac.kr"
+ },
+ "0000056": {
+  "name": "경기대학교 (수원캠퍼스)",
+  "homepage": "http://enter.kyonggi.ac.kr"
+ },
+ "0000059": {
+  "name": "경남대학교",
+  "homepage": "https://ipsi.kyungnam.ac.kr"
+ },
+ "0000060": {
+  "name": "경동대학교 (메디컬캠퍼스)",
+  "homepage": "https://www.kduniv.ac.kr/iphak/Main.do"
+ },
+ "0002574": {
+  "name": "경동대학교 (메트로폴캠퍼스)",
+  "homepage": "https://www.kduniv.ac.kr/iphak/Main.do"
+ },
+ "0002744": {
+  "name": "경동대학교 (설악캠퍼스)",
+  "homepage": "https://www.kduniv.ac.kr/iphak/Main.do"
+ },
+ "0000005": {
+  "name": "경북대학교",
+  "homepage": "http://ipsi1.knu.ac.kr"
+ },
+ "0000007": {
+  "name": "경상국립대학교",
+  "homepage": "https://new.gnu.ac.kr"
+ },
+ "0000062": {
+  "name": "경성대학교",
+  "homepage": "http://ipsi.ks.ac.kr"
+ },
+ "0000244": {
+  "name": "경운대학교",
+  "homepage": "http://ipsi.ikw.ac.kr"
+ },
+ "0000256": {
+  "name": "경인교육대학교",
+  "homepage": "http://ipsi.ginue.ac.kr/ipsi/"
+ },
+ "0000064": {
+  "name": "경일대학교",
+  "homepage": "http://ibsi.kiu.ac.kr"
+ },
+ "0000066": {
+  "name": "경희대학교",
+  "homepage": "http://iphak.khu.ac.kr"
+ },
+ "0000068": {
+  "name": "계명대학교",
+  "homepage": "http://www.gokmu.ac.kr"
+ },
+ "0000069": {
+  "name": "고려대학교",
+  "homepage": "https://oku.korea.ac.kr"
+ },
+ "0000070": {
+  "name": "고려대학교(세종)",
+  "homepage": "http://oku.korea.ac.kr/"
+ },
+ "0000071": {
+  "name": "고신대학교",
+  "homepage": "https://dream.kosin.ac.kr"
+ },
+ "0000251": {
+  "name": "공주교육대학교",
+  "homepage": "https://www.gjue.ac.kr/html/ipsi/index.html"
+ },
+ "0000073": {
+  "name": "광신대학교",
+  "homepage": "http://www.kwangshin.ac.kr/ipsi/"
+ },
+ "0000074": {
+  "name": "광운대학교",
+  "homepage": "https://iphak.kw.ac.kr"
+ },
+ "0000075": {
+  "name": "광주가톨릭대학교",
+  "homepage": "https://admission.gjc.ac.kr"
+ },
+ "0000252": {
+  "name": "광주교육대학교",
+  "homepage": "http://entrance.gnue.ac.kr"
+ },
+ "0000231": {
+  "name": "광주대학교",
+  "homepage": "http://iphak.gwangju.ac.kr"
+ },
+ "0000076": {
+  "name": "광주여자대학교",
+  "homepage": "http://ipsi.kwu.ac.kr"
+ },
+ "0000001": {
+  "name": "국립강릉원주대학교 (강릉캠퍼스)",
+  "homepage": "https://iphak.gwnu.ac.kr"
+ },
+ "0000002": {
+  "name": "국립강릉원주대학교 (원주캠퍼스)",
+  "homepage": "https://ipsi.gwnu.ac.kr"
+ },
+ "0000021": {
+  "name": "국립경국대학교",
+  "homepage": "https://ipsi.gknu.ac.kr/"
+ },
+ "0000008": {
+  "name": "국립공주대학교",
+  "homepage": "http://ipsi.kongju.ac.kr/"
+ },
+ "0000009": {
+  "name": "국립군산대학교",
+  "homepage": "http://www.kunsan.ac.kr/iphak/index.kunsan?contentsSid=667u0026sso=ok"
+ },
+ "0000010": {
+  "name": "국립금오공과대학교",
+  "homepage": "http://iphak.kumoh.ac.kr"
+ },
+ "0000011": {
+  "name": "국립목포대학교",
+  "homepage": "http://ipsi.mokpo.ac.kr"
+ },
+ "0000012": {
+  "name": "국립목포해양대학교",
+  "homepage": "https://www.mmu.ac.kr/admission"
+ },
+ "0000013": {
+  "name": "국립부경대학교",
+  "homepage": "http://iphak.pknu.ac.kr"
+ },
+ "0000020": {
+  "name": "국립순천대학교",
+  "homepage": "http://iphak.scnu.ac.kr"
+ },
+ "0003297": {
+  "name": "국립창원대학교 (거창캠퍼스)",
+  "homepage": "https://ipsi.gc.ac.kr"
+ },
+ "0003298": {
+  "name": "국립창원대학교 (남해캠퍼스)",
+  "homepage": "http://ipsi.namhae.ac.kr"
+ },
+ "0000028": {
+  "name": "국립창원대학교 (본교)",
+  "homepage": "http://ipsi.changwon.ac.kr/ipsi"
+ },
+ "0000034": {
+  "name": "국립한국교통대학교",
+  "homepage": "http://www.ut.ac.kr/ipsi.do"
+ },
+ "0000033": {
+  "name": "국립한국해양대학교",
+  "homepage": "https://www.kmou.ac.kr/ipsi/main.do"
+ },
+ "0000039": {
+  "name": "국립한밭대학교",
+  "homepage": "https://admission.hanbat.ac.kr/"
+ },
+ "0000078": {
+  "name": "국민대학교",
+  "homepage": "http://admission.kookmin.ac.kr"
+ },
+ "0000080": {
+  "name": "극동대학교",
+  "homepage": "http://ipsi.kdu.ac.kr"
+ },
+ "0000224": {
+  "name": "금강대학교",
+  "homepage": "http://www.ggu.ac.kr/ipsi"
+ },
+ "0000241": {
+  "name": "김천대학교",
+  "homepage": "http://ibhak.gimcheon.ac.kr/"
+ },
+ "0000081": {
+  "name": "나사렛대학교",
+  "homepage": "http://ipsi.kornu.ac.kr"
+ },
+ "0000216": {
+  "name": "남부대학교",
+  "homepage": "http://ipsi.nambu.ac.kr"
+ },
+ "0000245": {
+  "name": "남서울대학교",
+  "homepage": "https://www.namseoul.net/"
+ },
+ "0000082": {
+  "name": "단국대학교 (죽전캠퍼스)",
+  "homepage": "http://ipsi.dankook.ac.kr"
+ },
+ "0002726": {
+  "name": "단국대학교 (천안캠퍼스)",
+  "homepage": "http://ipsi.dankook.ac.kr"
+ },
+ "0000088": {
+  "name": "대구가톨릭대학교",
+  "homepage": "http://ibsi.cu.ac.kr"
+ },
+ "0000253": {
+  "name": "대구교육대학교",
+  "homepage": "https://admission.dnue.ac.kr/ipsi/"
+ },
+ "0000084": {
+  "name": "대구대학교",
+  "homepage": "http://ipsi.daegu.ac.kr"
+ },
+ "0000087": {
+  "name": "대구예술대학교",
+  "homepage": "http://ipsi.dgau.ac.kr/"
+ },
+ "0000061": {
+  "name": "대구한의대학교",
+  "homepage": "http://ipsi.dhu.ac.kr"
+ },
+ "0000093": {
+  "name": "대신대학교",
+  "homepage": "http://www.daeshin.ac.kr/html/02_admission/"
+ },
+ "0000094": {
+  "name": "대전가톨릭대학교",
+  "homepage": "http://www.dcatholic.ac.kr/univ/s2/college.asp"
+ },
+ "0000095": {
+  "name": "대전대학교",
+  "homepage": "https://ipsi.dju.ac.kr"
+ },
+ "0000238": {
+  "name": "대전신학대학교",
+  "homepage": "http://ipsi.daejeon.ac.kr"
+ },
+ "0000097": {
+  "name": "대진대학교",
+  "homepage": "http://admission.daejin.ac.kr"
+ },
+ "0000099": {
+  "name": "덕성여자대학교",
+  "homepage": "http://enter.duksung.ac.kr/"
+ },
+ "0000100": {
+  "name": "동국대학교",
+  "homepage": "http://ipsi.dongguk.edu"
+ },
+ "0000101": {
+  "name": "동국대학교(WISE)",
+  "homepage": "http://ipsi.dongguk.ac.kr"
+ },
+ "0000102": {
+  "name": "동덕여자대학교",
+  "homepage": "https://ipsi.dongduk.ac.kr/"
+ },
+ "0000235": {
+  "name": "동명대학교",
+  "homepage": "http://iphak.tu.ac.kr/"
+ },
+ "0000103": {
+  "name": "동서대학교",
+  "homepage": "http://ipsi.dongseo.ac.kr/ipsi/"
+ },
+ "0000104": {
+  "name": "동신대학교",
+  "homepage": "https://ipsi.dsu.ac.kr"
+ },
+ "0000105": {
+  "name": "동아대학교",
+  "homepage": "http://ent.donga.ac.kr"
+ },
+ "0000106": {
+  "name": "동양대학교",
+  "homepage": "http://ipsi.dyu.ac.kr/"
+ },
+ "0000107": {
+  "name": "동의대학교",
+  "homepage": "http://ipsi.deu.ac.kr"
+ },
+ "0000108": {
+  "name": "루터대학교",
+  "homepage": "http://ltu-admission.ac.kr/"
+ },
+ "0000109": {
+  "name": "명지대학교 (인문캠퍼스)",
+  "homepage": "http://iphak.mju.ac.kr"
+ },
+ "0000111": {
+  "name": "명지대학교 (자연캠퍼스)",
+  "homepage": "http://iphak.mju.ac.kr"
+ },
+ "0000112": {
+  "name": "목원대학교",
+  "homepage": "http://enter.mokwon.ac.kr/"
+ },
+ "0000221": {
+  "name": "목포가톨릭대학교",
+  "homepage": "http://www.mcu.ac.kr/ipsi/"
+ },
+ "0000113": {
+  "name": "배재대학교",
+  "homepage": "http://enter.pcu.ac.kr/"
+ },
+ "0000178": {
+  "name": "백석대학교",
+  "homepage": "http://ipsi.bu.ac.kr"
+ },
+ "0000114": {
+  "name": "부산가톨릭대학교",
+  "homepage": "http://ipsi.cup.ac.kr/main/main.asp"
+ },
+ "0000254": {
+  "name": "부산교육대학교",
+  "homepage": "http://enter.bnue.ac.kr"
+ },
+ "0000014": {
+  "name": "부산대학교",
+  "homepage": "http://go.pusan.ac.kr/"
+ },
+ "0000115": {
+  "name": "부산외국어대학교",
+  "homepage": "https://enter.bufs.ac.kr"
+ },
+ "0000222": {
+  "name": "부산장신대학교",
+  "homepage": "http://ipsi.bpu.ac.kr"
+ },
+ "0000116": {
+  "name": "삼육대학교",
+  "homepage": "http://ipsi.syu.ac.kr"
+ },
+ "0000117": {
+  "name": "상명대학교 (서울캠퍼스)",
+  "homepage": "https://admission.smu.ac.kr"
+ },
+ "0002959": {
+  "name": "상명대학교 (천안캠퍼스)",
+  "homepage": "http://admission.smu.ac.kr"
+ },
+ "0000119": {
+  "name": "상지대학교",
+  "homepage": "https://www.sangji.ac.kr/go/index.do"
+ },
+ "0000120": {
+  "name": "서강대학교",
+  "homepage": "https://admission.sogang.ac.kr/"
+ },
+ "0000121": {
+  "name": "서경대학교",
+  "homepage": "http://go.skuniv.ac.kr/#main"
+ },
+ "0000036": {
+  "name": "서울과학기술대학교",
+  "homepage": "http://admission.seoultech.ac.kr"
+ },
+ "0000255": {
+  "name": "서울교육대학교",
+  "homepage": "http://admission.snue.ac.kr"
+ },
+ "0000098": {
+  "name": "서울기독대학교",
+  "homepage": "https://admission.scu.ac.kr/main"
+ },
+ "0000019": {
+  "name": "서울대학교",
+  "homepage": "http://admission.snu.ac.kr"
+ },
+ "0000040": {
+  "name": "서울시립대학교",
+  "homepage": "http://admission.uos.ac.kr"
+ },
+ "0000125": {
+  "name": "서울신학대학교",
+  "homepage": "https://ipsi.stu.ac.kr"
+ },
+ "0000126": {
+  "name": "서울여자대학교",
+  "homepage": "http://admission.swu.ac.kr"
+ },
+ "0000127": {
+  "name": "서울장신대학교",
+  "homepage": "http://www.sjs.ac.kr/admission/main/index.php"
+ },
+ "0000205": {
+  "name": "서울한영대학교",
+  "homepage": "http://ipsi.shyu.ac.kr/"
+ },
+ "0000128": {
+  "name": "서원대학교",
+  "homepage": "http://iphak.seowon.ac.kr"
+ },
+ "0000129": {
+  "name": "선문대학교",
+  "homepage": "http://ilove.sunmoon.ac.kr"
+ },
+ "0000131": {
+  "name": "성결대학교",
+  "homepage": "http://ipsi.sungkyul.ac.kr"
+ },
+ "0000132": {
+  "name": "성공회대학교",
+  "homepage": "http://enter.skhu.ac.kr"
+ },
+ "0000133": {
+  "name": "성균관대학교",
+  "homepage": "http://admission.skku.edu/"
+ },
+ "0000136": {
+  "name": "성신여자대학교",
+  "homepage": "http://ipsi.sungshin.ac.kr"
+ },
+ "0000137": {
+  "name": "세명대학교",
+  "homepage": "http://www.semyung.ac.kr/ipsi.do"
+ },
+ "0000138": {
+  "name": "세종대학교",
+  "homepage": "http://ipsi.sejong.ac.kr"
+ },
+ "0000092": {
+  "name": "세한대학교",
+  "homepage": "http://iphak.sehan.ac.kr"
+ },
+ "0000243": {
+  "name": "송원대학교",
+  "homepage": "http://www.songwon.ac.kr/ipsi/"
+ },
+ "0000139": {
+  "name": "수원가톨릭대학교",
+  "homepage": "https://www.suwoncatholic.ac.kr/admission/college02.asp"
+ },
+ "0000140": {
+  "name": "수원대학교",
+  "homepage": "http://ipsi.suwon.ac.kr/"
+ },
+ "0000141": {
+  "name": "숙명여자대학교",
+  "homepage": "http://admission.sookmyung.ac.kr"
+ },
+ "0000142": {
+  "name": "순천향대학교",
+  "homepage": "https://ipsi.sch.ac.kr"
+ },
+ "0000143": {
+  "name": "숭실대학교",
+  "homepage": "https://admission.ssu.ac.kr"
+ },
+ "0000065": {
+  "name": "신경주대학교",
+  "homepage": "https://sgu.ac.kr/ko/admission/admission_hub.php"
+ },
+ "0000144": {
+  "name": "신라대학교",
+  "homepage": "http://ipsi.silla.ac.kr"
+ },
+ "0002800": {
+  "name": "신한대학교 (동두천캠퍼스)",
+  "homepage": "http://ipsi.shinhan.ac.kr/"
+ },
+ "0002712": {
+  "name": "신한대학교 (의정부캠퍼스)",
+  "homepage": "http://ipsi.shinhan.ac.kr/"
+ },
+ "0000145": {
+  "name": "아신대학교",
+  "homepage": "http://admission.acts.ac.kr"
+ },
+ "0000146": {
+  "name": "아주대학교",
+  "homepage": "https://www.iajou.ac.kr/"
+ },
+ "0000148": {
+  "name": "안양대학교 (강화캠퍼스)",
+  "homepage": "http://enter.anyang.ac.kr"
+ },
+ "0000147": {
+  "name": "안양대학교 (안양캠퍼스)",
+  "homepage": "http://enter.anyang.ac.kr"
+ },
+ "0000149": {
+  "name": "연세대학교",
+  "homepage": "http://admission.yonsei.ac.kr"
+ },
+ "0000150": {
+  "name": "연세대학교(미래)",
+  "homepage": "http://admission.yonsei.ac.kr/mirae"
+ },
+ "0000151": {
+  "name": "영남대학교",
+  "homepage": "http://enter.yu.ac.kr"
+ },
+ "0000153": {
+  "name": "영남신학대학교",
+  "homepage": "http://entra.ytus.ac.kr"
+ },
+ "0003193": {
+  "name": "영산대학교 (양산캠퍼스)",
+  "homepage": "http://ipsi.ysu.ac.kr"
+ },
+ "0003194": {
+  "name": "영산대학교 (해운대캠퍼스)",
+  "homepage": "http://ipsi.ysu.ac.kr/"
+ },
+ "0000155": {
+  "name": "영산선학대학교",
+  "homepage": "https://www.youngsan.ac.kr/"
+ },
+ "0000228": {
+  "name": "예수대학교",
+  "homepage": "http://www.jesus.ac.kr"
+ },
+ "0000219": {
+  "name": "예원예술대학교 (양주캠퍼스)",
+  "homepage": "http://www.yewon.ac.kr/Admission/index.jsp"
+ },
+ "0000218": {
+  "name": "예원예술대학교 (임실캠퍼스)",
+  "homepage": "http://www.yewon.ac.kr/Admission/index.jsp"
+ },
+ "0000156": {
+  "name": "용인대학교",
+  "homepage": "https://ipsi.yongin.ac.kr"
+ },
+ "0000157": {
+  "name": "우석대학교",
+  "homepage": "https://enter.woosuk.ac.kr/main/"
+ },
+ "0000240": {
+  "name": "우송대학교",
+  "homepage": "http://ent.wsu.ac.kr"
+ },
+ "0000158": {
+  "name": "울산대학교",
+  "homepage": "https://www.ulsan.ac.kr/iphak"
+ },
+ "0000159": {
+  "name": "원광대학교",
+  "homepage": "http://ipsi.wku.ac.kr"
+ },
+ "0000160": {
+  "name": "위덕대학교",
+  "homepage": "http://ipsi.uu.ac.kr/"
+ },
+ "0000154": {
+  "name": "유원대학교",
+  "homepage": "http://ipsi.u1.ac.kr"
+ },
+ "0000162": {
+  "name": "을지대학교 (대전캠퍼스)",
+  "homepage": "http://admission.eulji.ac.kr/"
+ },
+ "0000161": {
+  "name": "을지대학교 (성남캠퍼스)",
+  "homepage": "http://ipsi.eulji.ac.kr"
+ },
+ "0002911": {
+  "name": "을지대학교 (의정부캠퍼스)",
+  "homepage": "http://admission.eulji.ac.kr"
+ },
+ "0000163": {
+  "name": "이화여자대학교",
+  "homepage": "http://admission.ewha.ac.kr"
+ },
+ "0000164": {
+  "name": "인제대학교",
+  "homepage": "https://iphak.inje.ac.kr/intro.asp"
+ },
+ "0000168": {
+  "name": "인천가톨릭대학교 (강화캠퍼스)",
+  "homepage": "https://admission.iccu.ac.kr/default.php"
+ },
+ "0000167": {
+  "name": "인천가톨릭대학교 (송도캠퍼스)",
+  "homepage": "https://admission.iccu.ac.kr/default.php"
+ },
+ "0002660": {
+  "name": "인천대학교",
+  "homepage": "https://admission.inu.ac.kr"
+ },
+ "0000169": {
+  "name": "인하대학교",
+  "homepage": "http://admission.inha.ac.kr"
+ },
+ "0000170": {
+  "name": "장로회신학대학교",
+  "homepage": "http://www.puts.ac.kr/ipsi/db/db_admission_v1/"
+ },
+ "0000023": {
+  "name": "전남대학교 (광주캠퍼스)",
+  "homepage": "http://admission.jnu.ac.kr"
+ },
+ "0000024": {
+  "name": "전남대학교 (여수캠퍼스)",
+  "homepage": "http://admission.jnu.ac.kr"
+ },
+ "0000025": {
+  "name": "전북대학교",
+  "homepage": "http://enter.jbnu.ac.kr"
+ },
+ "0000258": {
+  "name": "전주교육대학교",
+  "homepage": "http://enter.jnue.kr/"
+ },
+ "0000171": {
+  "name": "전주대학교",
+  "homepage": "http://iphak.jj.ac.kr"
+ },
+ "0000248": {
+  "name": "제주국제대학교",
+  "homepage": "http://apply.jeju.ac.kr"
+ },
+ "0000027": {
+  "name": "제주대학교",
+  "homepage": "http://ibsi.jejunu.ac.kr"
+ },
+ "0000172": {
+  "name": "조선대학교",
+  "homepage": "http://i.chosun.ac.kr"
+ },
+ "0000173": {
+  "name": "중부대학교",
+  "homepage": "http://ipsi.joongbu.ac.kr"
+ },
+ "0000174": {
+  "name": "중앙대학교 (다빈치캠퍼스)",
+  "homepage": "http://admission.cau.ac.kr"
+ },
+ "0000175": {
+  "name": "중앙대학교 (서울캠퍼스)",
+  "homepage": "http://admission.cau.ac.kr"
+ },
+ "0000177": {
+  "name": "중앙승가대학교",
+  "homepage": "https://www.sangha.ac.kr:8000/2006/school/school_01.html"
+ },
+ "0000239": {
+  "name": "중원대학교",
+  "homepage": "http://ipsi.jwu.ac.kr"
+ },
+ "0000260": {
+  "name": "진주교육대학교",
+  "homepage": "http://enter.cue.ac.kr/enter"
+ },
+ "0000187": {
+  "name": "차의과학대학교",
+  "homepage": "http://admission.cha.ac.kr"
+ },
+ "0000249": {
+  "name": "창신대학교",
+  "homepage": "http://admission.cs.ac.kr"
+ },
+ "0000284": {
+  "name": "청운대학교",
+  "homepage": "http://enter.chungwoon.ac.kr"
+ },
+ "0000261": {
+  "name": "청주교육대학교",
+  "homepage": "https://www.cje.ac.kr/ipsi/"
+ },
+ "0000179": {
+  "name": "청주대학교",
+  "homepage": "https://ipsi.cju.ac.kr/ipsi/index.do"
+ },
+ "0000246": {
+  "name": "초당대학교",
+  "homepage": "http://ipsi.cdu.ac.kr/"
+ },
+ "0000180": {
+  "name": "총신대학교",
+  "homepage": "http://admission.chongshin.ac.kr"
+ },
+ "0000181": {
+  "name": "추계예술대학교",
+  "homepage": "http://www.chugye.ac.kr/mbs/ipsi/index.jsp"
+ },
+ "0000262": {
+  "name": "춘천교육대학교",
+  "homepage": "http://enter.cnue.ac.kr"
+ },
+ "0000029": {
+  "name": "충남대학교",
+  "homepage": "http://ipsi.cnu.ac.kr"
+ },
+ "0000030": {
+  "name": "충북대학교",
+  "homepage": "http://ipsi.chungbuk.ac.kr"
+ },
+ "0000184": {
+  "name": "칼빈대학교",
+  "homepage": "http://www.calvin.ac.kr/iphak/index.do?brd_mgrno=0u0026menu_no=1075"
+ },
+ "0000186": {
+  "name": "평택대학교",
+  "homepage": "http://entrance.ptu.ac.kr/"
+ },
+ "0000188": {
+  "name": "포항공과대학교",
+  "homepage": "https://adm-u.postech.ac.kr/"
+ },
+ "0000037": {
+  "name": "한경국립대학교",
+  "homepage": "http://ipsi.hknu.ac.kr"
+ },
+ "0000247": {
+  "name": "한국공학대학교",
+  "homepage": "http://iphak.tukorea.ac.kr/"
+ },
+ "0000031": {
+  "name": "한국교원대학교",
+  "homepage": "https://www.knue.ac.kr/ipsi_intro/index.jsp"
+ },
+ "0000189": {
+  "name": "한국기술교육대학교",
+  "homepage": "https://ipsi.koreatech.ac.kr/main.do"
+ },
+ "0000191": {
+  "name": "한국성서대학교",
+  "homepage": "http://ipsi.bible.ac.kr/index.aspx"
+ },
+ "0000192": {
+  "name": "한국외국어대학교",
+  "homepage": "http://adms.hufs.ac.kr/"
+ },
+ "0000032": {
+  "name": "한국체육대학교",
+  "homepage": "http://www.knsu.ac.kr/ipsi"
+ },
+ "0000182": {
+  "name": "한국침례신학대학교",
+  "homepage": "http://ipsi.kbtus.ac.kr"
+ },
+ "0000194": {
+  "name": "한국항공대학교",
+  "homepage": "http://ibhak.kau.ac.kr"
+ },
+ "0000195": {
+  "name": "한남대학교",
+  "homepage": "http://ibsi.hnu.kr"
+ },
+ "0000196": {
+  "name": "한동대학교",
+  "homepage": "http://admissions.handong.edu"
+ },
+ "0000197": {
+  "name": "한라대학교",
+  "homepage": "https://ipsi.halla.ac.kr/main/main.php"
+ },
+ "0000198": {
+  "name": "한림대학교",
+  "homepage": "https://admission.hallym.ac.kr/"
+ },
+ "0000199": {
+  "name": "한서대학교",
+  "homepage": "http://helper.hanseo.ac.kr"
+ },
+ "0000200": {
+  "name": "한성대학교",
+  "homepage": "http://enter.hansung.ac.kr/"
+ },
+ "0000201": {
+  "name": "한세대학교",
+  "homepage": "http://ipsi.hansei.ac.kr"
+ },
+ "0000202": {
+  "name": "한신대학교",
+  "homepage": "http://ent.hs.ac.kr"
+ },
+ "0000203": {
+  "name": "한양대학교",
+  "homepage": "http://go.hanyang.ac.kr"
+ },
+ "0000204": {
+  "name": "한양대학교(ERICA)",
+  "homepage": "http://goerica.hanyang.ac.kr"
+ },
+ "0000206": {
+  "name": "한일장신대학교",
+  "homepage": "http://www.hanil.ac.kr/bbs/board.php?wr_table=ai110"
+ },
+ "0000207": {
+  "name": "협성대학교",
+  "homepage": "https://iphak.uhs.ac.kr"
+ },
+ "0000208": {
+  "name": "호남대학교",
+  "homepage": "http://enter.honam.ac.kr"
+ },
+ "0000209": {
+  "name": "호남신학대학교",
+  "homepage": "http://ipsi.htus.ac.kr"
+ },
+ "0000211": {
+  "name": "호서대학교",
+  "homepage": "http://ipsi.hoseo.ac.kr"
+ },
+ "0000282": {
+  "name": "호원대학교",
+  "homepage": "http://www.howon.ac.kr"
+ },
+ "0000212": {
+  "name": "홍익대학교 (서울캠퍼스)",
+  "homepage": "https://admission.hongik.ac.kr"
+ },
+ "0002949": {
+  "name": "홍익대학교 (세종캠퍼스)",
+  "homepage": "https://admission.hongik.ac.kr"
+ },
+ "0000233": {
+  "name": "화성의과학대학교",
+  "homepage": "https://www.hsmu.ac.kr/admission/main/index.do"
+ }
+}

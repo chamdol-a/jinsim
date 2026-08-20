@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대학 자료실 | 전국 대학 공식 입시자료 원스톱 열람</title>
+<meta name="description" content="전국 4년제 대학의 대학입학전형시행계획·수시/정시 모집요강·선행학습영향평가보고서·논술 고사자료·전공가이드북을 한 화면에서 찾아보고 바로 열람합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --paper:#ffffff;
+    --soft:#f6f5f1;
+    --rule:#e2e0da;
+    --accent:#8f1d1d;
+    --gray:#6f6c66;
+    --sidebar:360px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--paper);
+    color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .serif{font-family:'Nanum Myeongjo',serif;}
+  a{color:inherit;text-decoration:none;}
+  button,select,input{font-family:inherit;color:inherit;}
+
+  /* ===== 머리말 ===== */
+  header.top{padding:22px 24px 14px;border-bottom:4px double var(--ink);}
+  .kicker{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.14em;}
+  header.top h1{font-family:'Nanum Myeongjo',serif;font-size:31px;line-height:1.2;
+    letter-spacing:-.01em;margin:7px 0 8px;}
+  header.top .sub{font-size:13.5px;color:var(--gray);}
+  header.top .sub b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;}
+  header.top .sub a.wide{color:var(--accent);border-bottom:1px solid var(--accent);
+    padding-bottom:1px;margin-left:10px;white-space:nowrap;}
+
+  /* ===== 도구 막대 ===== */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+    padding:13px 24px;border-bottom:1px solid var(--rule);}
+  .yearbtns{display:flex;border:1px solid var(--rule);}
+  .yearbtns button{background:transparent;border:none;cursor:pointer;font-size:13px;
+    padding:6px 14px;font-variant-numeric:tabular-nums;color:var(--gray);}
+  .yearbtns button+button{border-left:1px solid var(--rule);}
+  .yearbtns button.on{background:var(--ink);color:#fff;font-weight:700;}
+  .search{border:none;border-bottom:1px solid var(--rule);background:transparent;
+    font-size:14px;padding:6px 2px;width:240px;}
+  .search:focus{outline:none;border-bottom-color:var(--accent);}
+  select.sel{border:1px solid var(--rule);background:var(--paper);font-size:13px;
+    padding:6px 9px;cursor:pointer;}
+  .sp{flex:1;}
+  .count{font-size:12.5px;color:var(--gray);font-variant-numeric:tabular-nums;}
+
+  /* ===== 칩(라인/자료종류) ===== */
+  .chips{display:flex;flex-wrap:wrap;gap:7px;padding:12px 24px;border-bottom:1px solid var(--rule);}
+  .chips .lab{font-size:11.5px;letter-spacing:.1em;color:var(--gray);font-weight:600;
+    align-self:center;margin-right:4px;width:52px;flex:none;}
+  .chip{font-size:12.5px;color:var(--gray);cursor:pointer;padding:4px 12px;
+    border:1px solid var(--rule);border-radius:999px;background:var(--paper);transition:all .12s;}
+  .chip:hover{border-color:var(--accent);color:var(--ink);}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+  .chip .n{font-size:10.5px;opacity:.7;margin-left:3px;font-variant-numeric:tabular-nums;}
+
+  /* ===== 본문 2단 ===== */
+  .main{display:flex;align-items:stretch;min-height:calc(100vh - 250px);}
+  .list{width:var(--sidebar);flex:none;border-right:1px solid var(--rule);
+    overflow-y:auto;max-height:calc(100vh - 250px);}
+  .uni{padding:13px 22px;border-bottom:1px solid var(--rule);cursor:pointer;}
+  .uni:hover{background:var(--soft);}
+  .uni.on{background:var(--soft);box-shadow:inset 3px 0 0 var(--accent);}
+  .uni .nm{font-size:15px;font-weight:600;letter-spacing:-.01em;}
+  .uni .nm .camp{font-size:12px;color:var(--gray);font-weight:400;margin-left:4px;}
+  .uni .meta{font-size:11.5px;color:var(--gray);margin-top:4px;}
+  .uni .meta .ln{color:var(--accent);font-weight:600;}
+  .uni .docs{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;}
+  .dot{font-size:10.5px;color:var(--gray);border:1px solid var(--rule);
+    border-radius:2px;padding:1px 6px;background:var(--paper);}
+  .empty{padding:60px 24px;text-align:center;color:var(--gray);font-size:14px;}
+
+  /* ===== 오른쪽 상세 ===== */
+  .detail{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .dhead{padding:20px 26px 16px;border-bottom:1px solid var(--rule);}
+  .dhead h2{font-family:'Nanum Myeongjo',serif;font-size:26px;letter-spacing:-.01em;}
+  .dhead .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  .btag{font-size:11.5px;color:var(--gray);border:1px solid var(--rule);padding:2px 9px;border-radius:2px;}
+  .btag.line{color:var(--accent);border-color:var(--accent);font-weight:600;}
+  .btag.med{background:var(--soft);}
+  .dhead .hp{font-size:12.5px;color:var(--accent);border-bottom:1px solid var(--accent);
+    padding-bottom:1px;margin-left:auto;}
+
+  .doclist{padding:14px 26px 4px;display:flex;flex-wrap:wrap;gap:8px;}
+  .doc{border:1px solid var(--rule);background:var(--paper);cursor:pointer;
+    padding:9px 15px;font-size:13.5px;text-align:left;transition:all .12s;}
+  .doc:hover{border-color:var(--accent);}
+  .doc.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600;}
+  .doc .yr{font-size:10.5px;opacity:.65;margin-left:6px;font-variant-numeric:tabular-nums;}
+
+  .actions{display:flex;flex-wrap:wrap;gap:8px;padding:12px 26px 14px;
+    border-bottom:1px solid var(--rule);align-items:center;}
+  .abtn{font-size:12.5px;border:1px solid var(--rule);padding:6px 13px;cursor:pointer;
+    background:var(--paper);}
+  .abtn:hover{border-color:var(--accent);color:var(--accent);}
+  .abtn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .abtn.primary:hover{color:#fff;opacity:.9;}
+  .note{font-size:11.5px;color:var(--gray);}
+
+  .frame{flex:1;min-height:520px;background:var(--soft);position:relative;}
+  .frame iframe{width:100%;height:100%;border:none;display:block;position:absolute;inset:0;}
+  .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;text-align:center;padding:30px;color:var(--gray);}
+  .placeholder .big{font-family:'Nanum Myeongjo',serif;font-size:20px;color:var(--ink);}
+  .placeholder .sm{font-size:13px;max-width:30em;line-height:1.75;}
+
+  /* ===== 안내/출처 ===== */
+  footer.src{padding:18px 24px 40px;border-top:1px solid var(--rule);font-size:12px;color:var(--gray);}
+  footer.src b{color:var(--ink);font-weight:600;}
+  footer.src a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+
+  .backbtn{display:none;}
+
+  /* ===== 모바일 ===== */
+  @media (max-width:980px){
+    .main{display:block;min-height:0;}
+    .list{width:auto;max-height:none;border-right:none;overflow:visible;}
+    .detail{display:none;}
+    body.reading .list{display:none;}
+    body.reading .detail{display:flex;}
+    body.reading .backbtn{display:inline-block;}
+    .frame{min-height:70vh;}
+    header.top h1{font-size:25px;}
+    .chips .lab{width:auto;}
+    .search{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="kicker">진심 데이터</div>
+  <h1 class="serif">대학 자료실 — 공식 입시자료 원스톱 열람</h1>
+  <p class="sub">전국 4년제 <b id="statUniv">–</b>개 대학 · 공식 자료 <b id="statDoc">–</b>건 ·
+     내려받지 않고 화면에서 바로 열람 <span id="statUpd"></span>
+     <a class="wide" id="openWide" href="#" target="_blank" rel="noopener">전체 화면으로 보기 ↗</a></p>
+</header>
+
+<div class="toolbar">
+  <div class="yearbtns" id="yearBtns"></div>
+  <input class="search" id="q" type="search" placeholder="대학명·지역 검색 (예: 서울대, 충북)" autocomplete="off">
+  <select class="sel" id="region"><option value="all">전체 지역</option></select>
+  <span class="sp"></span>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="chips" id="lineChips"><span class="lab">대학 구분</span></div>
+<div class="chips" id="typeChips"><span class="lab">자료 종류</span></div>
+
+<div class="main">
+  <div class="list" id="list"></div>
+  <div class="detail" id="detail">
+    <div class="dhead">
+      <span class="backbtn abtn" id="back">◀ 대학 목록</span>
+      <h2 class="serif" id="dName">대학을 선택하세요</h2>
+      <div class="tags" id="dTags"></div>
+    </div>
+    <div class="doclist" id="dDocs"></div>
+    <div class="actions" id="dActions"></div>
+    <div class="frame" id="frame">
+      <div class="placeholder" id="ph">
+        <div class="big serif">왼쪽에서 대학을 고르세요</div>
+        <div class="sm">시행계획 · 수시/정시 모집요강 · 선행학습영향평가보고서 · 논술(고사) 자료 ·
+          전공가이드북까지, 대학이 발행한 공식 자료를 한 자리에서 펼쳐 봅니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="src">
+  <b>출처</b> · 시행계획/모집요강/선행학습영향평가/논술자료 — 교육부·한국대학교육협의회 <b>대입정보포털 어디가</b>(adiga.kr)에 각 대학이 제출한 원본 파일.
+  전공가이드북·전형 안내 책자 — 각 대학 입학처 발행 자료.<br>
+  <b>안내</b> · 원본이 한글(HWP) 파일이면 화면 미리보기가 열리지 않습니다. 그때는 <b>새 창에서 열기</b> 또는 <b>내려받기</b>를 눌러 주세요.
+  모집요강은 대학 사정으로 수정될 수 있으므로 최종 확인은 각 대학 입학처에서 하시기 바랍니다.<br>
+  <span id="srcUpd"></span> · <b>진심 입시정보</b> — 김진석(EBS 입시정보 대표강사)
+</footer>
+
+<script src="yogang-data.js"></script>
+<script src="extra-links.js"></script>
+<script>
+(function(){
+  "use strict";
+  var DATA = window.YOGANG_DATA || {years:[],data:{}};
+  var EXTRA = (window.YOGANG_EXTRA && window.YOGANG_EXTRA.items) || {};
+
+  /* ---------- 자료 종류 분류 ---------- */
+  var TYPES = [
+    {key:"all",   label:"전체"},
+    {key:"plan",  label:"시행계획"},
+    {key:"susi",  label:"수시모집요강"},
+    {key:"jeongsi",label:"정시모집요강"},
+    {key:"prior", label:"선행학습영향평가"},
+    {key:"essay", label:"논술·고사자료"},
+    {key:"guide", label:"전공가이드북·책자"},
+    {key:"etc",   label:"재외국민·외국인"}
+  ];
+  function typeOf(t){
+    if(t.indexOf("시행계획")>=0) return "plan";
+    if(t.indexOf("재외국민")>=0 || t.indexOf("외국인")>=0) return "etc";
+    if(t.indexOf("수시")>=0) return "susi";
+    if(t.indexOf("정시")>=0) return "jeongsi";
+    if(t.indexOf("선행학습")>=0) return "prior";
+    if(t.indexOf("논술")>=0 || t.indexOf("고사")>=0 || t.indexOf("적성")>=0) return "essay";
+    if(t.indexOf("가이드")>=0 || t.indexOf("책자")>=0 || t.indexOf("안내서")>=0 ||
+       t.indexOf("전공")>=0 || t.indexOf("학과")>=0) return "guide";
+    return "etc";
+  }
+  var TYPE_ORDER = {plan:1, susi:2, jeongsi:3, prior:4, essay:5, guide:6, etc:7};
+  var SHORT = {plan:"시행계획", susi:"수시요강", jeongsi:"정시요강", prior:"선행학습",
+               essay:"논술자료", guide:"가이드북", etc:"기타"};
+
+  /* ---------- 라인(대학 구분) ---------- */
+  var LINES = ["SKY","6개","11개","15개","22개","25개","경기-1부","경기-2부",
+               "경기-대전","인천","여대","거국","교대"];
+
+  // 기본 학년도 = 자료가 가장 많이 올라온 해(보통 현재 입시 연도)
+  var defaultYear = (DATA.years||[]).slice().sort(function(a,b){
+    var ca = (DATA.data[a]||[]).reduce(function(s,u){return s+(u.docs||[]).length;},0);
+    var cb = (DATA.data[b]||[]).reduce(function(s,u){return s+(u.docs||[]).length;},0);
+    return cb-ca;
+  })[0] || "2027";
+
+  var state = {year: defaultYear, q:"", region:"all", line:"all",
+               type:"all", univ:null, doc:null};
+
+  /* ---------- 대학별 자료 만들기(어디가 + 직접 등록) ---------- */
+  function docsOf(u){
+    var out = (u.docs||[]).map(function(d){
+      return {title:d.title, url:d.url, type:typeOf(d.title), year:state.year, src:"adiga"};
+    });
+    var ex = EXTRA[u.name] || EXTRA[u.short] || [];
+    ex.forEach(function(d){
+      out.push({title:d.title, url:d.url, type:d.type||typeOf(d.title),
+                year:d.year||"", src:"univ", note:d.note});
+    });
+    out.sort(function(a,b){ return (TYPE_ORDER[a.type]||9)-(TYPE_ORDER[b.type]||9); });
+    return out;
+  }
+
+  function universities(){
+    var list = (DATA.data[state.year]||[]).slice();
+    // 직접 등록 자료만 있는 대학도 살려 둔다
+    list.forEach(function(u){ u._docs = docsOf(u); });
+    return list;
+  }
+
+  function filtered(){
+    var q = state.q.trim().toLowerCase();
+    return universities().filter(function(u){
+      if(state.region!=="all" && u.region!==state.region) return false;
+      if(state.line==="med"){ if(!(u.med&&u.med.length)) return false; }
+      else if(state.line==="etc"){ if(u.line) return false; }
+      else if(state.line!=="all"){ if(u.line!==state.line) return false; }
+      if(state.type!=="all" && !u._docs.some(function(d){return d.type===state.type;})) return false;
+      if(q){
+        var hay = (u.name+" "+u.region+" "+(u.line||"")+" "+(u.med||[]).join(" ")).toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    }).sort(function(a,b){
+      var d = (a.line_no==null?99:a.line_no) - (b.line_no==null?99:b.line_no);
+      if(d) return d;
+      var r = (a.rank==null?99:a.rank) - (b.rank==null?99:b.rank);
+      if(r) return r;
+      return a.name.localeCompare(b.name,"ko");
+    });
+  }
+
+  /* ---------- 그리기 ---------- */
+  var $ = function(id){ return document.getElementById(id); };
+
+  function drawYears(){
+    $("yearBtns").innerHTML = "";
+    DATA.years.forEach(function(y){
+      var b = document.createElement("button");
+      b.textContent = y + "학년도";
+      if(y===state.year) b.className = "on";
+      b.onclick = function(){ state.year=y; state.univ=null; state.doc=null; drawAll(); };
+      $("yearBtns").appendChild(b);
+    });
+  }
+
+  function drawRegions(){
+    var seen = {};
+    (DATA.data[state.year]||[]).forEach(function(u){ seen[u.region]=1; });
+    var order = ["서울","경기","인천","강원","대전","세종","충북","충남",
+                 "부산","대구","울산","경북","경남","광주","전북","전남","제주"];
+    var opts = order.filter(function(r){ return seen[r]; })
+                    .concat(Object.keys(seen).filter(function(r){ return order.indexOf(r)<0; }));
+    $("region").innerHTML = '<option value="all">전체 지역</option>' +
+      opts.map(function(r){ return '<option value="'+r+'">'+r+'</option>'; }).join("");
+    $("region").value = state.region;
+  }
+
+  function chip(box, key, label, n, cur, onclick){
+    var b = document.createElement("button");
+    b.className = "chip" + (key===cur ? " on" : "");
+    b.innerHTML = label + (n!=null ? ' <span class="n">'+n+'</span>' : "");
+    b.onclick = onclick;
+    box.appendChild(b);
+  }
+
+  function drawChips(){
+    var all = universities();
+    var lbox = $("lineChips");
+    lbox.innerHTML = '<span class="lab">대학 구분</span>';
+    chip(lbox,"all","전체",all.length,state.line,function(){state.line="all";drawAll();});
+    LINES.forEach(function(l){
+      var n = all.filter(function(u){return u.line===l;}).length;
+      if(!n) return;
+      chip(lbox,l,l,n,state.line,function(){state.line=l;drawAll();});
+    });
+    var etcN = all.filter(function(u){return !u.line;}).length;
+    if(etcN) chip(lbox,"etc","그 밖의 대학",etcN,state.line,function(){state.line="etc";drawAll();});
+    var medN = all.filter(function(u){return u.med&&u.med.length;}).length;
+    if(medN) chip(lbox,"med","의치한약수",medN,state.line,function(){state.line="med";drawAll();});
+
+    var tbox = $("typeChips");
+    tbox.innerHTML = '<span class="lab">자료 종류</span>';
+    TYPES.forEach(function(t){
+      var n = t.key==="all"
+        ? all.reduce(function(s,u){return s+u._docs.length;},0)
+        : all.reduce(function(s,u){return s+u._docs.filter(function(d){return d.type===t.key;}).length;},0);
+      if(!n && t.key!=="all") return;
+      chip(tbox,t.key,t.label,n,state.type,function(){state.type=t.key;drawAll();});
+    });
+  }
+
+  function drawList(){
+    var rows = filtered();
+    var box = $("list");
+    box.innerHTML = "";
+    $("count").textContent = "대학 " + rows.length + "개";
+    if(!rows.length){
+      box.innerHTML = '<div class="empty">조건에 맞는 대학이 없습니다.<br>검색어나 필터를 바꿔 보세요.</div>';
+      return;
+    }
+    rows.forEach(function(u){
+      var el = document.createElement("div");
+      el.className = "uni" + (state.univ && state.univ.code===u.code ? " on" : "");
+      var camp = (u.name.match(/\[(.*?)\]/)||[])[1] || "";
+      var kinds = {};
+      u._docs.forEach(function(d){ kinds[d.type]=1; });
+      el.innerHTML =
+        '<div class="nm">' + u.short +
+          (camp && camp!=="본교" ? ' <span class="camp">'+camp+'</span>' : '') + '</div>' +
+        '<div class="meta">' + u.region +
+          (u.line ? ' · <span class="ln">'+u.line+'</span>' : '') +
+          ((u.med&&u.med.length) ? ' · ' + u.med.join("·") : '') + '</div>' +
+        '<div class="docs">' + Object.keys(kinds).sort(function(a,b){
+            return (TYPE_ORDER[a]||9)-(TYPE_ORDER[b]||9); })
+          .map(function(k){ return '<span class="dot">'+SHORT[k]+'</span>'; }).join("") + '</div>';
+      el.onclick = function(){ select(u); };
+      box.appendChild(el);
+    });
+  }
+
+  function select(u){
+    state.univ = u;
+    var docs = u._docs;
+    if(state.type!=="all"){
+      var pick = docs.filter(function(d){return d.type===state.type;});
+      state.doc = pick[0] || docs[0] || null;
+    } else {
+      state.doc = docs[0] || null;
+    }
+    document.body.classList.add("reading");
+    drawList(); drawDetail();
+    if(state.doc) open(state.doc);
+  }
+
+  function drawDetail(){
+    var u = state.univ;
+    if(!u) return;
+    $("dName").textContent = u.name.replace(/\[본교\]/,"");
+    $("dTags").innerHTML =
+      '<span class="btag">'+u.region+'</span>' +
+      (u.line ? '<span class="btag line">'+u.line+'</span>' : '') +
+      (u.med||[]).map(function(m){return '<span class="btag med">'+m+'</span>';}).join("") +
+      (u.homepage ? '<a class="hp" href="'+u.homepage+'" target="_blank" rel="noopener">입학처 바로가기 ↗</a>' : '');
+
+    var box = $("dDocs");
+    box.innerHTML = "";
+    u._docs.forEach(function(d){
+      var b = document.createElement("button");
+      b.className = "doc" + (state.doc===d ? " on" : "");
+      b.innerHTML = d.title + (d.year ? ' <span class="yr">'+d.year+'</span>' : '');
+      b.onclick = function(){ state.doc=d; drawDetail(); open(d); };
+      box.appendChild(b);
+    });
+    if(!u._docs.length) box.innerHTML = '<div class="note">등록된 자료가 없습니다.</div>';
+
+    var a = $("dActions");
+    a.innerHTML = "";
+    if(state.doc){
+      var d = state.doc;
+      a.innerHTML =
+        '<a class="abtn primary" href="'+d.url+'" target="_blank" rel="noopener">↗ 새 창에서 열기</a>' +
+        '<a class="abtn" href="'+d.url+'" target="_blank" rel="noopener" download>⤓ 내려받기</a>' +
+        (u.homepage ? '<a class="abtn" href="'+u.homepage+'" target="_blank" rel="noopener">입학처</a>' : '') +
+        '<span class="note">' + (d.src==="adiga" ? "어디가(대교협) 원본" : "대학 입학처 발행") +
+        (d.note ? ' · '+d.note : '') + ' · 미리보기가 비어 있으면 한글(HWP) 파일입니다</span>';
+    }
+  }
+
+  function open(d){
+    var f = $("frame");
+    var url = "https://docs.google.com/viewer?url=" + encodeURIComponent(d.url) + "&embedded=true";
+    f.innerHTML = '<iframe src="'+url+'" title="'+d.title+'" referrerpolicy="no-referrer"></iframe>';
+  }
+
+  function drawAll(){
+    drawYears(); drawRegions(); drawChips(); drawList();
+    if(state.univ){
+      var again = (DATA.data[state.year]||[]).filter(function(u){return u.code===state.univ.code;})[0];
+      if(again){ again._docs = docsOf(again); state.univ = again; }
+    }
+    drawDetail();
+    var u = DATA.data[state.year]||[];
+    $("statUniv").textContent = u.length;
+    $("statDoc").textContent = u.reduce(function(s,x){return s+docsOf(x).length;},0);
+    var up = DATA.updated ? "· 자료 갱신 " + DATA.updated : "";
+    $("statUpd").textContent = up;
+    $("srcUpd").textContent = DATA.updated ? "자료 갱신일 " + DATA.updated : "";
+  }
+
+  // 사이트 안(iframe)에서 볼 때만 '전체 화면으로 보기' 링크를 노출
+  (function(){
+    var a = $("openWide");
+    if(window.self === window.top){ a.style.display="none"; return; }
+    a.href = location.href;
+  })();
+
+  $("q").oninput = function(){ state.q=this.value; drawList(); };
+  $("region").onchange = function(){ state.region=this.value; drawList(); };
+  $("back").onclick = function(){ document.body.classList.remove("reading"); };
+
+  drawAll();
+})();
+</script>
+</body>
+</html>
